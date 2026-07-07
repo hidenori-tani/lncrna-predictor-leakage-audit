@@ -55,7 +55,7 @@ print(f"wrote {OUT}/fig1_rnalight.png/.pdf")
 fig2, (ax2A, ax2B) = plt.subplots(1, 2, figsize=(7.2, 3.2))
 
 # 2A: degree_sum under three regimes
-regimes = ["random-edge\n+ uniform neg\n(their protocol)","random-edge\n+ degree-matched\nneg","cold-start\n(entity-disjoint)"]
+regimes = ["random-edge\n+ uniform neg\n(reconstruction)","random-edge\n+ degree-matched\nneg","cold-start\n(entity-disjoint)"]
 rv = [0.750, 0.458, 0.500]
 rc = [CB["red"], CB["blue"], CB["blue"]]
 ax2A.bar(range(3), rv, color=rc, edgecolor="black", linewidth=0.4)
