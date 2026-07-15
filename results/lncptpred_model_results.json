@@ -1,0 +1,58 @@
+[
+  {
+    "condition": "gc-only [unmatched (as shipped)]",
+    "auroc_mean": 0.6325134095625,
+    "auroc_std": 0.0023382930681151407,
+    "n_features": 1,
+    "n_rows": 400000
+  },
+  {
+    "condition": "len-gc-only [unmatched (as shipped)]",
+    "auroc_mean": 0.6509524871249999,
+    "auroc_std": 0.0022418922024797882,
+    "n_features": 2,
+    "n_rows": 400000
+  },
+  {
+    "condition": "kmer-only [unmatched (as shipped)]",
+    "auroc_mean": 0.7324712978125,
+    "auroc_std": 0.0024879660220692833,
+    "n_features": 340,
+    "n_rows": 400000
+  },
+  {
+    "condition": "kmer+protein [unmatched (as shipped)]",
+    "auroc_mean": 0.790063110625,
+    "auroc_std": 0.0017165751339219785,
+    "n_features": 341,
+    "n_rows": 400000
+  },
+  {
+    "condition": "gc-only [GC-matched]",
+    "auroc_mean": 0.5305630807068245,
+    "auroc_std": 0.0011313473929422547,
+    "n_features": 1,
+    "n_rows": 327526
+  },
+  {
+    "condition": "len-gc-only [GC-matched]",
+    "auroc_mean": 0.5712587406900558,
+    "auroc_std": 0.0019461367141076543,
+    "n_features": 2,
+    "n_rows": 327526
+  },
+  {
+    "condition": "kmer-only [GC-matched]",
+    "auroc_mean": 0.6880433325671809,
+    "auroc_std": 0.0014192621790156325,
+    "n_features": 340,
+    "n_rows": 327526
+  },
+  {
+    "condition": "kmer+protein [GC-matched]",
+    "auroc_mean": 0.7589429221850834,
+    "auroc_std": 0.0014896097092783004,
+    "n_features": 341,
+    "n_rows": 327526
+  }
+]

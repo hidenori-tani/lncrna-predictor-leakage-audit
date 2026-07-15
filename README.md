@@ -1,87 +1,141 @@
-# What lncRNA predictors actually learn — audit code
+# Protocol ablation — audit code for three lncRNA machine-learning predictors
 
 Reproduction code for:
 
-> Tani H. *What lncRNA predictors actually learn: an audit of confounding and
-> evaluation leakage, with a reporting standard.* Computers in Biology and Medicine (submitted, 2026).
+> Tani H. *Protocol Ablation: Attributing the Reported Performance of lncRNA
+> Machine-Learning Predictors to Evaluation Artifacts.* (submitted, 2026).
 
-This repository contains the complete audit pipeline for two published lncRNA
-machine-learning predictors — **RNAlight** (nuclear/cytoplasmic localization,
-k-mer LightGBM) and **DVMnet** (lncRNA–miRNA interaction, graph model). All
-experiments run on CPU (no GPU required).
+A reported benchmark score is a joint property of a model and its evaluation protocol.
+**Protocol ablation** re-runs the published model itself under a factorial ladder of
+counterfactual protocols — each closing exactly one defect — so the reported score can be
+*attributed* rather than merely doubted.
 
-## 1. Data sources
+Three audited predictors, one collapse and two non-collapses:
 
-This study analyzes only publicly available data. Obtain the primary inputs from:
-
-| Predictor | Upstream repository | What we use |
+| Predictor | Task | Result under the ladder |
 |---|---|---|
-| RNAlight | https://github.com/YangLab/RNAlight | processed train/test lncRNA sets + released k-mer frequency matrix (featurization check only) |
-| DVMnet | https://github.com/liuliwei1980/DVMnet | lncRNA–miRNA edge list + node table |
+| **RNAlight** (Yuan et al. 2023) | nuclear/cytoplasmic localization | does **not** collapse; homology-aware splitting is inert (ΔAUROC < 0.01) |
+| **DVMnet** (Wei et al. 2025) | lncRNA–miRNA interaction | **collapses**: 0.803 → 0.510 (chance) when only the negatives are fixed |
+| **LncPTPred** (Das et al. 2025) | lncRNA–protein interaction | does **not** collapse; GC-matching costs only 0.031 |
 
-`data/` here ships the small **derived** artifacts so the expensive steps can be
-skipped:
-- `pool.fasta` — 3,792 de-duplicated pooled lncRNA sequences (from the RNAlight release)
-- `pool_features.npz` — precomputed 1,344-dim k-mer frequency matrix + labels
-- `mmseqs_clusters/lin_0{5,7,8,9}_cluster.tsv`, `lin_80_cluster.tsv` — MMseqs2 clusters at 0.5/0.7/0.8/0.9 identity
-- `pubmed_counts.tsv` — PubMed co-occurrence counts (study-effort proxy) for 3,765/3,792 loci
+Everything runs on **CPU** (no GPU).
+
+## 1. Data sources — we redistribute none of the audited data
+
+This study analyzes only publicly available data, obtained from the original authors:
+
+| Predictor | Upstream repository |
+|---|---|
+| RNAlight | https://github.com/YangLab/RNAlight |
+| DVMnet | https://github.com/liuliwei1980/DVMnet |
+| LncPTPred | https://github.com/zglabDIB/lncptpred |
+
+The audit is only meaningful when run against the authors' own released artifacts, so this
+repository ships **derived** artifacts only:
+
+- `data/pool.fasta`, `data/pool_features.npz` — pooled lncRNA sequences + k-mer matrix (RNAlight)
+- `data/mmseqs_clusters/*.tsv` — MMseqs2 clusters at 0.5/0.7/0.8/0.9 identity
+- `data/pubmed_counts.tsv` — PubMed co-occurrence counts (study-effort proxy)
+- `data/dvmnet_embed_seed42.npz` — **cached doc2vec node embeddings** for DVMnet
+
+The embedding cache matters: gensim's doc2vec is not deterministic, so without it the
+protocol effects would be confounded with embedding noise. Shipping it makes our ablation
+reproducible *exactly* rather than up to that noise.
 
 ## 2. Environment
 
 ```bash
-# option A — conda (includes MMseqs2)
-conda env create -f environment.yml && conda activate lncrna-leakage-audit
-# option B — pip (install MMseqs2 separately: `brew install mmseqs2`)
+conda env create -f environment.yml && conda activate lncrna-leakage-audit   # includes MMseqs2
+# or
 python -m venv venv && source venv/bin/activate && pip install -r requirements.txt
 ```
-Python 3.13; MMseqs2 release 18-8cc5c. Seeds are fixed (100 for RNAlight to match
-the original; 42 for DVMnet).
+Python 3.13.5; torch 2.13.0, torch_geometric 2.8.0, gensim 4.4.0, LightGBM 4.6,
+scikit-learn 1.9, MMseqs2 18, ViennaRNA 2.7.2. Seeds fixed (100 for RNAlight to match the
+original; 42 for DVMnet).
 
-### Paths (no hard-coded paths — set via env vars, with sensible defaults)
-Each script resolves paths relative to the repo (`code/` + `data/`), overridable by
-environment variables:
+### Paths
+No hard-coded paths. Scripts resolve relative to the repo, overridable by env var:
 ```bash
-export RNALIGHT_DIR=/path/to/your/clone/RNAlight   # default: ../external/RNAlight
-export DVMNET_DIR=/path/to/your/clone/DVMnet       # default: ../external/DVMnet
-# AUDIT_DATA (default ../data) and AUDIT_FIGS (default ../figures) rarely need changing
+export RNALIGHT_DIR=/path/to/RNAlight     # default ../external/RNAlight
+export DVMNET_DIR=/path/to/DVMnet         # default ../external/DVMnet
+# AUDIT_DATA (../data), AUDIT_RESULTS (../results), AUDIT_FIGS (../figures) rarely need changing
 ```
-Scripts that use only the bundled `data/` run out of the box; scripts that read the
-upstream train/test tables or the DVMnet edge list need the corresponding clone (see
-the "needs" column below).
+
+### Running DVMnet's model on CPU
+`code/dvmnet_harness.py` leaves the upstream repository **unmodified**. Two shims make its
+CUDA-only code run on CPU without touching any model math: `torch.Tensor.cuda(...)` becomes
+the identity (the model calls `.cuda(0)` on already-CPU tensors) and `torch.cuda.set_device(...)`
+becomes a no-op. Architecture, hyperparameters (Adam lr=0.0008, hidden 128/64, 19 epochs)
+and features are imported verbatim.
+
+The harness also loads DVMnet's shipped `vectors_{lnc,mi}.pkl` through a **restricted
+unpickler** that permits only numpy array reconstruction and raises on anything else. These
+are third-party pickles; static `pickletools` inspection found nothing but numpy, and both
+load cleanly under the restriction.
 
 ## 3. Scripts → reported results
 
-| Script | Produces | Needs | Manuscript |
-|---|---|---|---|
-| `prep_pool.py` | `pool.fasta`, `pool_features.npz` from the RNAlight release | RNALIGHT_DIR | §2.1 (3,792 unique lncRNAs) |
-| `reproduce_rnalight.py` | featurization check (max\|Δ\| = 9.97e-17) + reproduced AUROC 0.780 vs 0.783 | RNALIGHT_DIR | §2.2, §3.1 |
-| `exp_homology_split.py` | random CV 0.728; MMseqs2 GroupKFold 0.728 (id0.5) / 0.725 (id0.8); homolog coverage 1.6–5.2% | bundled `data/` ✓ | §3.1, Fig 1A |
-| `exp_composition_confounds.py` | AUROC by feature set (dinuc-16 = 0.703; length p=3.9e-24, GC p=4.6e-13) | RNALIGHT_DIR | §3.2, Fig 1B |
-| `exp_confound_matched.py` | length/GC-matched AUROC 0.689 (n=2,764); 8-seed CV 0.730 ± 0.004 | RNALIGHT_DIR | §3.2 |
-| `crawl_pubmed_counts.py` | `pubmed_counts.tsv` (resumable; curl-based) | RNALIGHT_DIR | §2.5 |
-| `exp_study_effort.py` | strata AUROC 0.730/0.719/0.672/0.716; studied→unstudied 0.690 vs 0.714; 75% zero-pub | RNALIGHT_DIR + bundled `data/pubmed_counts.tsv` | §3.3 |
-| `exp_dvmnet_topology.py` | degree-sum 0.750 (their protocol); all heuristics 0.500 cold-start | DVMNET_DIR | §3.4, Fig 2 |
-| `exp_dvmnet_negatives.py` | degree-matched negatives 0.458 (canonical) | DVMNET_DIR | §3.4, Fig 2A |
-| `make_figures.py` | `figures/fig1_rnalight.{png,pdf}`, `fig2_dvmnet.{png,pdf}` | (self-contained) | Fig 1, 2 |
+| Script | Produces | Needs |
+|---|---|---|
+| `reproduce_rnalight.py` | featurization check (max\|Δ\| < 1e-16) + AUROC 0.780 vs reported 0.783 | RNALIGHT_DIR |
+| `exp_homology_split.py` | random CV 0.728; MMseqs2 GroupKFold 0.728 (id0.5) / 0.725 (id0.8); homolog coverage 1.6–5.2% | bundled `data/` |
+| `exp_composition_confounds.py` | AUROC by feature set (dinucleotide-16 = 0.703 = 97% of the full model) | RNALIGHT_DIR |
+| `exp_confound_matched.py` | length/GC-matched AUROC 0.689; 8-seed CV 0.730 ± 0.004 | RNALIGHT_DIR |
+| `exp_study_effort.py` | strata AUROC 0.730/0.719/0.672/0.716 (no famous-few gradient) | RNALIGHT_DIR |
+| `exp_dvmnet_topology.py` | degree-sum 0.750 under their protocol; 0.500 cold-start (model-free) | DVMNET_DIR |
+| `exp_dvmnet_negatives.py` | degree-matched negatives 0.458 (model-free) | DVMNET_DIR |
+| **`exp_dvmnet_model.py`** | **the ablation ladder: DVMnet's deep model, 5 conditions × 5 folds** → `results/dvmnet_model_results.json` | DVMNET_DIR |
+| **`exp_dvmnet_negative_types.py`** | 55.5% of DVMnet's negatives are impossible pair types (analytic expectation 54.3%) | DVMNET_DIR |
+| **`exp_dvmnet_stats.py`** | paired tests / CIs / Cohen's dz → `results/dvmnet_stats.json` | `results/` |
+| `exp_lncptpred_audit.py` | benchmark probes: length match fails (0.528), GC leaks 0.628 | LncPTPred data |
+| `exp_lncptpred_model.py` | model-level: 0.790 full, −0.031 under GC matching | LncPTPred data |
+| `make_figures.py` | Figures 1–3 (`.png` + `.pdf`) | `results/` |
+| **`factcheck_draft.py`** | asserts all 70 manuscript numbers against the results JSONs | `results/` |
 
-## 4. Quick reproduce
+## 4. The headline, reproduced
 
-Runs out of the box on the bundled `data/` (no upstream clone needed):
 ```bash
 cd code
-python exp_homology_split.py          # Fig 1A numbers (verified: random 0.728, homology 0.728/0.725)
-python make_figures.py                # regenerate both figures from recorded values
-```
-The remaining scripts additionally need the upstream clones — set `RNALIGHT_DIR` /
-`DVMNET_DIR` (see §2), then:
-```bash
-python exp_composition_confounds.py   # Fig 1B numbers        (RNALIGHT_DIR)
-python exp_confound_matched.py        # matched + multi-seed  (RNALIGHT_DIR)
-python exp_study_effort.py            # study-effort strata   (RNALIGHT_DIR)
-python exp_dvmnet_topology.py         # DVMnet topology leak  (DVMNET_DIR)
-python exp_dvmnet_negatives.py        # degree-matched negs   (DVMNET_DIR)
+export DVMNET_DIR=/path/to/your/clone/DVMnet
+python exp_dvmnet_model.py --out ../results/dvmnet_model_results.json   # ~70 min, CPU
+python exp_dvmnet_stats.py
 ```
 
-## 5. License
+| condition | best epoch | final epoch | degree baseline (0 params) |
+|---|---|---|---|
+| verbatim (as released) | 0.8234 ± 0.0230 | 0.8021 ± 0.0364 | 0.7600 |
+| random-uniform | 0.8028 ± 0.0168 | 0.7375 ± 0.0181 | 0.7502 |
+| **random-degmat** | **0.5098 ± 0.0287** | 0.5065 ± 0.0283 | 0.4581 |
+| cold-uniform | 0.6839 ± 0.0217 | 0.5803 ± 0.0870 | 0.4943 |
+| cold-degmat | 0.5735 ± 0.0279 | 0.3924 ± 0.0217 | 0.3841 |
 
-Audit code: MIT (see `LICENSE`). Upstream data retains its original license.
+Fixing **only** the negative sampling — the published split left exactly as the authors
+wrote it — takes the deep model from 0.803 to **0.510, i.e. chance**, in every one of five
+folds (paired Δ = −0.2929, 95% CI [−0.3488, −0.2371], Cohen's dz = −6.51).
+
+### What we do not claim
+
+Neither control is clean, and they are biased in opposite directions: cold-uniform is
+optimistic (popularity still leaks), and cold-degmat is pessimistic, because in a
+positive-unlabelled setting degree-matched negatives are exactly the pairs most likely to
+be *unobserved true interactions*. So **0.39–0.68 is a floor, not an estimate**, and the
+released benchmark contains no information that can narrow it. The defensible claim is that
+the reported 0.87 is not attainable under any leakage-controlled protocol we tested — not
+that the model knows nothing. It beats the degree heuristic in every condition.
+
+`results/dvmnet_model_results.json` is a **direct, single-run output** of
+`exp_dvmnet_model.py` and carries per-fold arrays; `exp_dvmnet_stats.py` reads that JSON
+rather than parsing the run log, so no published number depends on a rounded log value.
+
+## 5. Changelog
+
+- **v2.0.0** (2026-07-16) — DVMnet's **deep model** run under the full ablation ladder
+  (v1.0.0 was model-free only); **LncPTPred** added as a third target; paired statistics;
+  the negative-set validity probe (55.5% impossible pair types); `factcheck_draft.py`;
+  per-fold arrays and cached embeddings for exact reproduction.
+- **v1.0.0** (2026-07-02) — RNAlight + DVMnet, model-agnostic protocol diagnosis.
+
+## 6. License
+
+Audit code: MIT (see `LICENSE`). Upstream data retains its original license and is not
+redistributed here.

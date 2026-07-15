@@ -1,0 +1,42 @@
+
+=== verbatim (split=random, negatives=verbatim) ===
+  [random/verbatim] fold 0: best 0.8671 | final 0.8655 | degree-baseline 0.7985 | n_val_pos 212 | impossible-type negatives 53.3%
+  [random/verbatim] fold 1: best 0.8187 | final 0.7949 | degree-baseline 0.7330 | n_val_pos 212 | impossible-type negatives 54.2%
+  [random/verbatim] fold 2: best 0.7992 | final 0.7775 | degree-baseline 0.7680 | n_val_pos 211 | impossible-type negatives 56.4%
+  [random/verbatim] fold 3: best 0.8187 | final 0.7593 | degree-baseline 0.7571 | n_val_pos 211 | impossible-type negatives 55.0%
+  [random/verbatim] fold 4: best 0.8133 | final 0.8133 | degree-baseline 0.7437 | n_val_pos 211 | impossible-type negatives 58.8%
+  -> best 0.8234 ± 0.0230 | final 0.8021 ± 0.0364 | degree 0.7600 | impossible-neg 55.5% | 988.6s
+
+=== random-uniform (split=random, negatives=uniform) ===
+  [random/uniform] fold 0: best 0.8070 | final 0.7594 | degree-baseline 0.7756 | n_val_pos 212 | impossible-type negatives 0.0%
+  [random/uniform] fold 1: best 0.7708 | final 0.7073 | degree-baseline 0.7027 | n_val_pos 212 | impossible-type negatives 0.0%
+  [random/uniform] fold 2: best 0.8049 | final 0.7522 | degree-baseline 0.7754 | n_val_pos 211 | impossible-type negatives 0.0%
+  [random/uniform] fold 3: best 0.8107 | final 0.7339 | degree-baseline 0.7518 | n_val_pos 211 | impossible-type negatives 0.0%
+  [random/uniform] fold 4: best 0.8204 | final 0.7345 | degree-baseline 0.7457 | n_val_pos 211 | impossible-type negatives 0.0%
+  -> best 0.8028 ± 0.0168 | final 0.7375 ± 0.0181 | degree 0.7502 | impossible-neg 0.0% | 728.8s
+
+=== random-degmat (split=random, negatives=degmat) ===
+  [random/degmat] fold 0: best 0.5025 | final 0.5025 | degree-baseline 0.4474 | n_val_pos 212 | impossible-type negatives 0.0%
+  [random/degmat] fold 1: best 0.5490 | final 0.5490 | degree-baseline 0.4800 | n_val_pos 212 | impossible-type negatives 0.0%
+  [random/degmat] fold 2: best 0.5010 | final 0.4928 | degree-baseline 0.4720 | n_val_pos 211 | impossible-type negatives 0.0%
+  [random/degmat] fold 3: best 0.4651 | final 0.4651 | degree-baseline 0.4271 | n_val_pos 211 | impossible-type negatives 0.0%
+  [random/degmat] fold 4: best 0.5315 | final 0.5230 | degree-baseline 0.4639 | n_val_pos 211 | impossible-type negatives 0.0%
+  -> best 0.5098 ± 0.0287 | final 0.5065 ± 0.0283 | degree 0.4581 | impossible-neg 0.0% | 728.7s
+
+=== cold-uniform (split=cold, negatives=uniform) ===
+  [cold/uniform] fold 0: best 0.6522 | final 0.6328 | degree-baseline 0.5087 | n_val_pos 194 | impossible-type negatives 0.0%
+  [cold/uniform] fold 1: best 0.6803 | final 0.4300 | degree-baseline 0.4840 | n_val_pos 162 | impossible-type negatives 0.0%
+  [cold/uniform] fold 2: best 0.6824 | final 0.6358 | degree-baseline 0.5065 | n_val_pos 181 | impossible-type negatives 0.0%
+  [cold/uniform] fold 3: best 0.6842 | final 0.6667 | degree-baseline 0.4541 | n_val_pos 301 | impossible-type negatives 0.0%
+  [cold/uniform] fold 4: best 0.7203 | final 0.5362 | degree-baseline 0.5180 | n_val_pos 219 | impossible-type negatives 0.0%
+  -> best 0.6839 ± 0.0217 | final 0.5803 ± 0.0870 | degree 0.4943 | impossible-neg 0.0% | 688.9s
+
+=== cold-degmat (split=cold, negatives=degmat) ===
+  [cold/degmat] fold 0: best 0.5581 | final 0.4081 | degree-baseline 0.3997 | n_val_pos 194 | impossible-type negatives 0.0%
+  [cold/degmat] fold 1: best 0.6118 | final 0.3517 | degree-baseline 0.3924 | n_val_pos 162 | impossible-type negatives 0.0%
+  [cold/degmat] fold 2: best 0.6024 | final 0.3916 | degree-baseline 0.3977 | n_val_pos 181 | impossible-type negatives 0.0%
+  [cold/degmat] fold 3: best 0.5503 | final 0.3976 | degree-baseline 0.3493 | n_val_pos 301 | impossible-type negatives 0.0%
+  [cold/degmat] fold 4: best 0.5449 | final 0.4132 | degree-baseline 0.3815 | n_val_pos 219 | impossible-type negatives 0.0%
+  -> best 0.5735 ± 0.0279 | final 0.3924 ± 0.0217 | degree 0.3841 | impossible-neg 0.0% | 620.4s
+
+wrote dvmnet_model_results.json
