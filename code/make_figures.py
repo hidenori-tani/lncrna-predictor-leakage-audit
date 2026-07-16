@@ -56,11 +56,13 @@ axA.bar(range(len(sv)), sv, color=[GREY, BLUE, BLUE, BLUE], edgecolor="black", l
 axA.axhline(0.728, ls="--", lw=0.8, color=BLUE)
 axA.set_xticks(range(len(splits)))
 axA.set_xticklabels(splits, fontsize=7)
-axA.set_ylim(0.45, 0.82)
+axA.set_ylim(0.45, 0.90)
 axA.set_ylabel("AUROC")
 axA.set_title("A  Homology-aware split = no-op", fontsize=9, loc="left")
-axA.annotate("only 1.6–5.2% of lncRNAs\nhave any homolog", xy=(2.5, 0.728), xytext=(0.7, 0.60),
-             fontsize=6.5, arrowprops=dict(arrowstyle="->", lw=0.6))
+# Headroom to 0.90 so this sits above the bars: at the old ylim it was printed across the
+# random-CV and id0.5 bars (verified by repro/check_figure_overlaps.py).
+axA.annotate("only 1.6–5.2% of lncRNAs\nhave any homolog", xy=(2.4, 0.735), xytext=(1.25, 0.815),
+             fontsize=6.5, ha="left", va="bottom", arrowprops=dict(arrowstyle="->", lw=0.6))
 
 featsets = ["length", "GC", "len+GC", "mono\n(4)", "di\n(16)", "3-mer\n(64)", "full\n(1344)"]
 vals = [0.581, 0.562, 0.615, 0.578, 0.703, 0.719, 0.728]
@@ -70,11 +72,13 @@ axB.axhline(0.728, ls="--", lw=0.8, color=BLUE)
 axB.axhline(0.5, ls=":", lw=0.8, color="black")
 axB.set_xticks(range(len(featsets)))
 axB.set_xticklabels(featsets, fontsize=7)
-axB.set_ylim(0.45, 0.80)
+# Same limits as panel A: both panels plot AUROC, so a given value must sit at the same
+# height in both. Different limits across panels of one figure invite false comparison.
+axB.set_ylim(0.45, 0.90)
 axB.set_ylabel("AUROC (5-fold CV)")
 axB.set_title("B  RNAlight signal = bulk composition", fontsize=9, loc="left")
-axB.annotate("16 dinucleotides\n= 97% of full model", xy=(4, 0.703), xytext=(1.4, 0.755),
-             fontsize=6.5, arrowprops=dict(arrowstyle="->", lw=0.6))
+axB.annotate("16 dinucleotides\n= 97% of full model", xy=(4, 0.712), xytext=(1.15, 0.815),
+             fontsize=6.5, ha="left", va="bottom", arrowprops=dict(arrowstyle="->", lw=0.6))
 fig.tight_layout()
 fig.savefig(f"{OUT}/fig1_rnalight.png", dpi=300)
 fig.savefig(f"{OUT}/fig1_rnalight.pdf")
@@ -173,8 +177,11 @@ for i, t in enumerate(targets):
     ax3.plot(t["controlled"], y, marker="s", ms=8, color=RED, zorder=3, ls="none")
     ax3.text(t["reported"] + 0.006, y + 0.16, t["reported_txt"], fontsize=6.2, color=GREY,
              va="bottom")
-    ax3.text(t["repro"], y - 0.22, f"{t['repro']:.3f}", fontsize=6.2, color=BLUE, ha="center",
-             va="top")
+    # Left-aligned just right of its marker, not centred on it: the repro and controlled
+    # labels share the row below the line, and centring both collided them wherever the two
+    # values sit close together (RNAlight 0.728 vs 0.689; LncPTPred 0.790 vs 0.759).
+    ax3.text(t["repro"] + 0.005, y - 0.22, f"{t['repro']:.3f}", fontsize=6.2, color=BLUE,
+             ha="left", va="top")
     ax3.text(t["trivial"], y + 0.16, f"{t['trivial']:.3f}\n{t['trivial_txt']}", fontsize=6.0,
              color=ORANGE, ha="center", va="bottom")
     ax3.text(t["controlled"], y - 0.22, f"{t['controlled']:.3f}\n{t['controlled_txt']}",
@@ -187,8 +194,10 @@ ax3.set_yticklabels([t["name"] for t in reversed(targets)], fontsize=7.5)
 ax3.set_xlim(0.45, 1.03)
 ax3.set_ylim(-0.85, 2.6)
 ax3.set_xlabel("AUROC")
+# pad clears the two-row legend below it; verified by repro/check_figure_overlaps.py, which
+# measures the rendered boxes. At pad=34 the legend's top row ran into the title.
 ax3.set_title("Reported claim vs trivial-signal ceiling vs leakage-controlled estimate",
-              fontsize=9, loc="left", pad=34)
+              fontsize=9, loc="left", pad=48)
 # legend lives outside the data area: every row here carries direct value labels, and an
 # in-axes legend covered the LncPTPred row.
 ax3.legend(handles=[
