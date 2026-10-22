@@ -1,0 +1,92 @@
+{
+ "settings": "original",
+ "params": {
+  "boosting": "gbdt",
+  "objective": "binary",
+  "num_leaves": 204,
+  "max_depth": 14,
+  "learning_rate": 0.03444081993284159,
+  "min_data_in_leaf": 13,
+  "min_sum_hessian_in_leaf": 0.001,
+  "min_gain_to_split": 0.0,
+  "feature_fraction": 0.7274007249599967,
+  "lambda_l1": 3.070346559732223,
+  "lambda_l2": 3.0935935089398225,
+  "bagging_fraction": 0.572447599448142,
+  "bagging_freq": 0,
+  "num_threads": 4,
+  "verbose": -1,
+  "metric": "binary_logloss",
+  "bin_construct_sample_cnt": 250000
+ },
+ "n_train": 320000,
+ "n_valid": 80000,
+ "n_A": 40000,
+ "n_B": 40000,
+ "iterations_run": 2173,
+ "fit_seconds": 450.3,
+ "early_stopping": {
+  "union": {
+   "best": 2122,
+   "stop": 2172,
+   "logloss": 0.5173466056163556
+  },
+  "A": {
+   "best": 2110,
+   "stop": 2160,
+   "logloss": 0.5163832337095254
+  },
+  "B": {
+   "best": 1757,
+   "stop": 1807,
+   "logloss": 0.5188034400639592
+  }
+ },
+ "auroc_at_iteration": {
+  "1757": {
+   "A": 0.8172106475,
+   "B": 0.8154881445387203,
+   "union": 0.8163512173852195,
+   "union_logloss": 0.5179216462768698
+  },
+  "2110": {
+   "A": 0.8177239350000001,
+   "B": 0.8159084520397712,
+   "union": 0.8168172386355107,
+   "union_logloss": 0.5173790595678043
+  },
+  "2122": {
+   "A": 0.8177095374999999,
+   "B": 0.8159809120399523,
+   "union": 0.8168457986355285,
+   "union_logloss": 0.5173466056163563
+  }
+ },
+ "as_released_protocol": 0.8168457986355285,
+ "nested": {
+  "stop_on_A_score_B": 0.8159084520397712,
+  "stop_on_B_score_A": 0.8172106475,
+  "mean": 0.8165595497698857
+ },
+ "selection_effect": 0.0002856750000904129,
+ "reproduction_check": {
+  "our_valid_logloss": 0.5173466056163556,
+  "released_valid_logloss": 0.4825826409413437,
+  "our_best_iteration": 2122,
+  "released_best_iteration": 10596
+ },
+ "gc_matched_eval": {
+  "n": 65370,
+  "auroc": 0.7784077030693057,
+  "auroc_unmatched": 0.8168457986355285,
+  "gc_only_unmatched": 0.6286177160178861,
+  "gc_only_matched": 0.5019616207095844
+ },
+ "length_matched_eval": {
+  "n": 61694,
+  "auroc": 0.8058575708608846,
+  "auroc_unmatched": 0.8168457986355285,
+  "length_only_unmatched": 0.5279890318924931,
+  "length_only_matched": 0.5
+ }
+}

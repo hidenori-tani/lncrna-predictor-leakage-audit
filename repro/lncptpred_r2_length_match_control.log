@@ -1,0 +1,6 @@
+scaler (16s)
+model loaded (17s)
+predicted 318,004 rows (225s)
+{'auroc_full': 0.8430072461733127, 'recorded_full': 0.8430072461733127, 'n_matched': 272670, 'recorded_n': 272670, 'auroc_matched': 0.8332353896762056, 'recorded_matched': 0.8332353896762056, 'ok': True}
+{'selected_iteration': 10474, 'n_valid': 318004, 'reproduction': {'auroc_full': 0.8430072461733127, 'recorded_full': 0.8430072461733127, 'n_matched': 272670, 'recorded_n': 272670, 'auroc_matched': 0.8332353896762056, 'recorded_matched': 0.8332353896762056, 'ok': True}, 'matched': {'n': 272670, 'auroc': 0.8332353896762056, 'length_only': 0.5000000000000001}, 'control_same_protein_counts': {'draws': 200, 'seeds': '10000 + draw', 'mean': 0.8437921298481544, 'sd': 0.00026516171909611407, 'p2_5': 0.8433074618510072, 'p97_5': 0.8442626934226084, 'min': 0.8429542741670889, 'max': 0.8445529692089484, 'length_only_mean': 0.5278476716610776, 'draws_at_or_below_matched': 0}, 'seconds': 327.2}
+redrawn 0.8328974264483318 0.8335041492171382

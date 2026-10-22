@@ -1,0 +1,88 @@
+./repro/exp_lncptpred_exact.py:157: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  out[col] = [len(re.findall("(?=" + pat + ")", s)) / (len(s) - (n - 1))
+./repro/exp_lncptpred_exact.py:155: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+  out[col] = [s.count(pat) / len(s) for s in red]
+protein features: 369 列（論文の記載は 369）
+rows: 400,000 of 1,590,016  positive rate 0.5000
+k-mer fractions: (400000, 340)  (36s)
+    structure 100,000/400,000  (64s)
+    structure 200,000/400,000  (127s)
+    structure 300,000/400,000  (201s)
+    structure 400,000/400,000  (273s)
+structure block: (400000, 10)
+lncRNA side: 351 列（論文の記載は 351）
+GC-matched subset: 328,126 rows
+
+=== released feature construction (exact) ===
+./repro/venv/lib/python3.13/site-packages/sklearn/utils/validation.py:2827: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+./repro/venv/lib/python3.13/site-packages/sklearn/utils/validation.py:2827: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+./repro/venv/lib/python3.13/site-packages/sklearn/utils/validation.py:2827: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+./repro/venv/lib/python3.13/site-packages/sklearn/utils/validation.py:2827: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+./repro/venv/lib/python3.13/site-packages/sklearn/utils/validation.py:2827: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+  exact lncRNA 351 only                        0.7382 ± 0.0021   (n=400,000, 351 feat, 48.1s)
+./repro/venv/lib/python3.13/site-packages/sklearn/utils/validation.py:2827: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+./repro/venv/lib/python3.13/site-packages/sklearn/utils/validation.py:2827: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+./repro/venv/lib/python3.13/site-packages/sklearn/utils/validation.py:2827: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+./repro/venv/lib/python3.13/site-packages/sklearn/utils/validation.py:2827: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+./repro/venv/lib/python3.13/site-packages/sklearn/utils/validation.py:2827: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+  exact lncRNA 351 + protein 369               0.7926 ± 0.0016   (n=400,000, 720 feat, 198.8s)
+./repro/venv/lib/python3.13/site-packages/sklearn/utils/validation.py:2827: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+./repro/venv/lib/python3.13/site-packages/sklearn/utils/validation.py:2827: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+./repro/venv/lib/python3.13/site-packages/sklearn/utils/validation.py:2827: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+./repro/venv/lib/python3.13/site-packages/sklearn/utils/validation.py:2827: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+./repro/venv/lib/python3.13/site-packages/sklearn/utils/validation.py:2827: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+  exact lncRNA 351 + protein categorical       0.7978 ± 0.0017   (n=400,000, 352 feat, 63.4s)
+
+=== isolating the three differences from the submitted reconstruction ===
+./repro/venv/lib/python3.13/site-packages/sklearn/utils/validation.py:2827: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+./repro/venv/lib/python3.13/site-packages/sklearn/utils/validation.py:2827: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+./repro/venv/lib/python3.13/site-packages/sklearn/utils/validation.py:2827: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+./repro/venv/lib/python3.13/site-packages/sklearn/utils/validation.py:2827: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+./repro/venv/lib/python3.13/site-packages/sklearn/utils/validation.py:2827: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+  released minus structure/strand (k-mer fractions + protein 369) 0.7898 ± 0.0017   (n=400,000, 709 feat, 239.3s)
+./repro/venv/lib/python3.13/site-packages/sklearn/utils/validation.py:2827: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+./repro/venv/lib/python3.13/site-packages/sklearn/utils/validation.py:2827: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+./repro/venv/lib/python3.13/site-packages/sklearn/utils/validation.py:2827: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+./repro/venv/lib/python3.13/site-packages/sklearn/utils/validation.py:2827: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+./repro/venv/lib/python3.13/site-packages/sklearn/utils/validation.py:2827: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+  released minus strand (351-1 + protein 369)  0.7926 ± 0.0016   (n=400,000, 719 feat, 223.4s)
+
+=== composition channel, on exact features ===
+./repro/venv/lib/python3.13/site-packages/sklearn/utils/validation.py:2827: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+./repro/venv/lib/python3.13/site-packages/sklearn/utils/validation.py:2827: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+./repro/venv/lib/python3.13/site-packages/sklearn/utils/validation.py:2827: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+./repro/venv/lib/python3.13/site-packages/sklearn/utils/validation.py:2827: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+./repro/venv/lib/python3.13/site-packages/sklearn/utils/validation.py:2827: UserWarning: X does not have valid feature names, but LGBMClassifier was fitted with feature names
+  warnings.warn(
+  exact full [GC-matched]                      0.7637 ± 0.0015   (n=328,126, 720 feat, 215.5s)
+
+wrote ./repro/lncptpred_exact_results.json

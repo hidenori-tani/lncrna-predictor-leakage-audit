@@ -1,0 +1,37 @@
+{
+ "blocks": {
+  "structure_9": {
+   "max_abs_mean_diff": 0.005388287429012983,
+   "max_mean_diff_in_sd": 0.001450447903239314,
+   "median_mean_diff_in_sd": 0.00038916070809256727,
+   "max_rel_sd_diff": 0.00358707885178966
+  },
+  "mfe": {
+   "max_abs_mean_diff": 0.0030148596378287706,
+   "max_mean_diff_in_sd": 0.0003698873817459438,
+   "median_mean_diff_in_sd": 0.0003698873817459438,
+   "max_rel_sd_diff": 0.0005089703365439568
+  },
+  "kmer_340": {
+   "max_abs_mean_diff": 0.00015632556350145266,
+   "max_mean_diff_in_sd": 0.0013993109688765566,
+   "median_mean_diff_in_sd": 0.00031712777122467456,
+   "max_rel_sd_diff": 0.004145862542692114
+  },
+  "strand": {
+   "max_abs_mean_diff": 0.00042109543737733207,
+   "max_mean_diff_in_sd": 0.00042131557114540475,
+   "median_mean_diff_in_sd": 0.00042131557114540475,
+   "max_rel_sd_diff": 1.371371611358363e-05
+  },
+  "protein_369": {
+   "max_abs_mean_diff": 8.227984917841269e-07,
+   "max_mean_diff_in_sd": 1.47350519882117e-05,
+   "median_mean_diff_in_sd": 3.346604553121461e-06,
+   "max_rel_sd_diff": 3.519625143466598e-05
+  }
+ },
+ "max_mean_diff_in_sd_released_order": 0.001450447903239314,
+ "max_mean_diff_in_sd_R1_order": 1472.2150261963104,
+ "note": "moments over all released rows vs the scaler's moments over the authors' 1,272,014 training rows; agreement to a few hundredths of an SD is what an 80% subsample of the same features gives"
+}

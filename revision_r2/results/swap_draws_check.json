@@ -1,0 +1,76 @@
+{
+ "repeats": 5,
+ "epochs": 19,
+ "sets": {
+  "random/train": {
+   "draws": 475,
+   "pairs": 401660,
+   "redrawn": 0,
+   "redrawn_minimum": 0,
+   "outside_pool": 0,
+   "draws_exact": 475,
+   "redrawn_pct": 0.0
+  },
+  "random/selection": {
+   "draws": 25,
+   "pairs": 2635,
+   "redrawn": 0,
+   "redrawn_minimum": 0,
+   "outside_pool": 0,
+   "draws_exact": 25,
+   "redrawn_pct": 0.0
+  },
+  "random/test": {
+   "draws": 25,
+   "pairs": 2650,
+   "redrawn": 0,
+   "redrawn_minimum": 0,
+   "outside_pool": 0,
+   "draws_exact": 25,
+   "redrawn_pct": 0.0
+  },
+  "cold/train": {
+   "draws": 475,
+   "pairs": 401660,
+   "redrawn": 0,
+   "redrawn_minimum": 0,
+   "outside_pool": 0,
+   "draws_exact": 475,
+   "redrawn_pct": 0.0
+  },
+  "cold/selection": {
+   "draws": 25,
+   "pairs": 2593,
+   "redrawn": 85,
+   "redrawn_minimum": 85,
+   "outside_pool": 85,
+   "draws_exact": 21,
+   "redrawn_draws_top_lncrna_share": [
+    0.5068,
+    0.5739,
+    0.6271,
+    0.4787
+   ],
+   "redrawn_pct": 3.2780563054377168
+  },
+  "cold/test": {
+   "draws": 25,
+   "pairs": 2692,
+   "redrawn": 0,
+   "redrawn_minimum": 0,
+   "outside_pool": 0,
+   "draws_exact": 25,
+   "redrawn_pct": 0.0
+  }
+ },
+ "seconds": 3.9,
+ "checks": [
+  "no observed interaction",
+  "no repeat",
+  "lncRNA counts exact",
+  "miRNA counts exact unless re-drawn",
+  "training sets and test halves exact",
+  "re-drawn pairs = the max-flow minimum",
+  "cold: entities kept"
+ ]
+}

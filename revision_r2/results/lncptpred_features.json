@@ -1,0 +1,8 @@
+{
+ "n_rows": 1590016,
+ "n_features": 720,
+ "non_acgt_sequences": 0,
+ "column_order": "9 structure | mfe | 340 k-mer fractions | Strand | 369 protein",
+ "dtype": "float16",
+ "seconds": 194.6
+}

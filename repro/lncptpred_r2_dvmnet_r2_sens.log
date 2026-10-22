@@ -1,0 +1,111 @@
+resuming: 5 condition(s) already in ../revision_r2/results/dvmnet_r2.json
+
+=== cold-alpha0.5 (split=cold, negatives=alpha0.5, repeats=3) ===
+    rep0 fold0: nested 0.6439 | oracle 0.6623 | test_final 0.6623 | full_best 0.6498 | deg 0.4326 | ep* 17
+    rep0 fold1: nested 0.6272 | oracle 0.6507 | test_final 0.5077 | full_best 0.6514 | deg 0.3964 | ep* 17
+    rep0 fold2: nested 0.5245 | oracle 0.5680 | test_final 0.5265 | full_best 0.5857 | deg 0.3999 | ep* 18
+    rep0 fold3: nested 0.5755 | oracle 0.5886 | test_final 0.5812 | full_best 0.6321 | deg 0.3456 | ep* 14
+    rep0 fold4: nested 0.5508 | oracle 0.6271 | test_final 0.4282 | full_best 0.6560 | deg 0.4663 | ep* 17
+  rep0 MEAN: nested 0.5844 | oracle 0.6193 | bias +0.0350 | degree 0.4082
+    rep1 fold0: nested 0.6536 | oracle 0.6631 | test_final 0.6350 | full_best 0.6479 | deg 0.4127 | ep* 16
+    rep1 fold1: nested 0.6022 | oracle 0.6221 | test_final 0.6179 | full_best 0.6292 | deg 0.4190 | ep* 13
+    rep1 fold2: nested 0.6911 | oracle 0.6912 | test_final 0.6911 | full_best 0.6759 | deg 0.4628 | ep* 19
+    rep1 fold3: nested 0.5590 | oracle 0.5590 | test_final 0.5590 | full_best 0.5784 | deg 0.4465 | ep* 19
+    rep1 fold4: nested 0.5511 | oracle 0.5654 | test_final 0.5373 | full_best 0.5608 | deg 0.3146 | ep* 16
+  rep1 MEAN: nested 0.6114 | oracle 0.6202 | bias +0.0088 | degree 0.4111
+    rep2 fold0: nested 0.5820 | oracle 0.5899 | test_final 0.3300 | full_best 0.5838 | deg 0.4864 | ep* 12
+    rep2 fold1: nested 0.6154 | oracle 0.6234 | test_final 0.3987 | full_best 0.6303 | deg 0.4287 | ep* 4
+    rep2 fold2: nested 0.5464 | oracle 0.5508 | test_final 0.4756 | full_best 0.6019 | deg 0.4228 | ep* 13
+    rep2 fold3: nested 0.6361 | oracle 0.6477 | test_final 0.6464 | full_best 0.6124 | deg 0.3783 | ep* 16
+    rep2 fold4: nested 0.6200 | oracle 0.6200 | test_final 0.6200 | full_best 0.6162 | deg 0.4386 | ep* 19
+  rep2 MEAN: nested 0.6000 | oracle 0.6063 | bias +0.0064 | degree 0.4310
+  -> nested 0.5986 ± 0.0136 | oracle 0.6153 | selection bias +0.0167 ± 0.0159 | degree 0.4167 | 1264.2s
+  wrote ../revision_r2/results/dvmnet_r2.json (6 conditions)
+
+=== cold-joint (split=cold, negatives=joint, repeats=3) ===
+    rep0 fold0: nested 0.6014 | oracle 0.6806 | test_final 0.6806 | full_best 0.6141 | deg 0.4186 | ep* 12
+    rep0 fold1: nested 0.6156 | oracle 0.6156 | test_final 0.5053 | full_best 0.6049 | deg 0.3594 | ep* 12
+    rep0 fold2: nested 0.6544 | oracle 0.6680 | test_final 0.5624 | full_best 0.6257 | deg 0.4390 | ep* 8
+    rep0 fold3: nested 0.5963 | oracle 0.5986 | test_final 0.5820 | full_best 0.5765 | deg 0.3375 | ep* 15
+    rep0 fold4: nested 0.4575 | oracle 0.5245 | test_final 0.4380 | full_best 0.6486 | deg 0.3599 | ep* 17
+  rep0 MEAN: nested 0.5850 | oracle 0.6174 | bias +0.0324 | degree 0.3829
+    rep1 fold0: nested 0.5887 | oracle 0.6147 | test_final 0.6005 | full_best 0.6282 | deg 0.3614 | ep* 12
+    rep1 fold1: nested 0.5247 | oracle 0.5388 | test_final 0.5257 | full_best 0.5796 | deg 0.3421 | ep* 11
+    rep1 fold2: nested 0.6115 | oracle 0.7060 | test_final 0.6069 | full_best 0.6795 | deg 0.3918 | ep* 10
+    rep1 fold3: nested 0.5401 | oracle 0.5552 | test_final 0.5552 | full_best 0.5612 | deg 0.3787 | ep* 16
+    rep1 fold4: nested 0.5832 | oracle 0.5867 | test_final 0.5714 | full_best 0.5487 | deg 0.3440 | ep* 16
+  rep1 MEAN: nested 0.5696 | oracle 0.6003 | bias +0.0307 | degree 0.3636
+    rep2 fold0: nested 0.4992 | oracle 0.5025 | test_final 0.3940 | full_best 0.5510 | deg 0.3453 | ep* 12
+    rep2 fold1: nested 0.5655 | oracle 0.5697 | test_final 0.4202 | full_best 0.5828 | deg 0.3684 | ep* 4
+    rep2 fold2: nested 0.5786 | oracle 0.5997 | test_final 0.4604 | full_best 0.6095 | deg 0.3885 | ep* 12
+    rep2 fold3: nested 0.6243 | oracle 0.6259 | test_final 0.6206 | full_best 0.6092 | deg 0.3593 | ep* 18
+    rep2 fold4: nested 0.5536 | oracle 0.5548 | test_final 0.5536 | full_best 0.5699 | deg 0.4078 | ep* 19
+  rep2 MEAN: nested 0.5642 | oracle 0.5705 | bias +0.0063 | degree 0.3738
+  -> nested 0.5730 ± 0.0108 | oracle 0.5961 | selection bias +0.0231 ± 0.0146 | degree 0.3734 | 936.1s
+  wrote ../revision_r2/results/dvmnet_r2.json (7 conditions)
+
+=== cold-nohub (split=cold, negatives=nohub, repeats=3) ===
+    rep0 fold0: nested 0.6750 | oracle 0.6893 | test_final 0.4144 | full_best 0.6393 | deg 0.4459 | ep* 6
+    rep0 fold1: nested 0.6165 | oracle 0.6312 | test_final 0.3617 | full_best 0.6159 | deg 0.4060 | ep* 8
+    rep0 fold2: nested 0.6305 | oracle 0.6417 | test_final 0.3924 | full_best 0.6278 | deg 0.4418 | ep* 4
+    rep0 fold3: nested 0.5863 | oracle 0.5936 | test_final 0.3625 | full_best 0.6016 | deg 0.3205 | ep* 8
+    rep0 fold4: nested 0.6500 | oracle 0.6500 | test_final 0.3549 | full_best 0.6382 | deg 0.4438 | ep* 6
+  rep0 MEAN: nested 0.6316 | oracle 0.6412 | bias +0.0095 | degree 0.4116
+    rep1 fold0: nested 0.6678 | oracle 0.6746 | test_final 0.3595 | full_best 0.6657 | deg 0.3970 | ep* 7
+    rep1 fold1: nested 0.5953 | oracle 0.5953 | test_final 0.5192 | full_best 0.5965 | deg 0.4094 | ep* 7
+    rep1 fold2: nested 0.6518 | oracle 0.6518 | test_final 0.4001 | full_best 0.6343 | deg 0.4492 | ep* 6
+    rep1 fold3: nested 0.5532 | oracle 0.5532 | test_final 0.4641 | full_best 0.5850 | deg 0.4353 | ep* 14
+    rep1 fold4: nested 0.5496 | oracle 0.6030 | test_final 0.4509 | full_best 0.5752 | deg 0.3546 | ep* 10
+  rep1 MEAN: nested 0.6035 | oracle 0.6156 | bias +0.0120 | degree 0.4091
+    rep2 fold0: nested 0.5302 | oracle 0.5302 | test_final 0.3518 | full_best 0.5755 | deg 0.4497 | ep* 1
+    rep2 fold1: nested 0.5824 | oracle 0.5954 | test_final 0.5545 | full_best 0.5792 | deg 0.4191 | ep* 13
+    rep2 fold2: nested 0.6068 | oracle 0.6191 | test_final 0.4206 | full_best 0.6491 | deg 0.4451 | ep* 8
+    rep2 fold3: nested 0.6575 | oracle 0.6575 | test_final 0.3520 | full_best 0.6338 | deg 0.4034 | ep* 5
+    rep2 fold4: nested 0.6249 | oracle 0.6419 | test_final 0.3822 | full_best 0.6315 | deg 0.4912 | ep* 10
+  rep2 MEAN: nested 0.6004 | oracle 0.6088 | bias +0.0084 | degree 0.4417
+  -> nested 0.6118 ± 0.0172 | oracle 0.6218 | selection bias +0.0100 ± 0.0018 | degree 0.4208 | 896.6s
+  wrote ../revision_r2/results/dvmnet_r2.json (8 conditions)
+
+=== random-joint (split=random, negatives=joint, repeats=3) ===
+    rep0 fold0: nested 0.7091 | oracle 0.7132 | test_final 0.6912 | full_best 0.6989 | deg 0.6574 | ep* 3
+    rep0 fold1: nested 0.6306 | oracle 0.6379 | test_final 0.6031 | full_best 0.6495 | deg 0.5760 | ep* 4
+    rep0 fold2: nested 0.6442 | oracle 0.6494 | test_final 0.6016 | full_best 0.6291 | deg 0.5934 | ep* 3
+    rep0 fold3: nested 0.6607 | oracle 0.6651 | test_final 0.5994 | full_best 0.6544 | deg 0.5880 | ep* 6
+    rep0 fold4: nested 0.6011 | oracle 0.6011 | test_final 0.5731 | full_best 0.6395 | deg 0.5438 | ep* 3
+  rep0 MEAN: nested 0.6491 | oracle 0.6533 | bias +0.0042 | degree 0.5917
+    rep1 fold0: nested 0.7060 | oracle 0.7078 | test_final 0.6662 | full_best 0.6829 | deg 0.6369 | ep* 7
+    rep1 fold1: nested 0.6226 | oracle 0.6349 | test_final 0.5888 | full_best 0.6698 | deg 0.5668 | ep* 2
+    rep1 fold2: nested 0.6331 | oracle 0.6331 | test_final 0.5877 | full_best 0.6560 | deg 0.5348 | ep* 8
+    rep1 fold3: nested 0.6485 | oracle 0.6485 | test_final 0.6011 | full_best 0.6214 | deg 0.5914 | ep* 6
+    rep1 fold4: nested 0.6399 | oracle 0.6492 | test_final 0.6148 | full_best 0.6378 | deg 0.6066 | ep* 3
+  rep1 MEAN: nested 0.6500 | oracle 0.6547 | bias +0.0047 | degree 0.5873
+    rep2 fold0: nested 0.5988 | oracle 0.5988 | test_final 0.5308 | full_best 0.6071 | deg 0.5085 | ep* 3
+    rep2 fold1: nested 0.6158 | oracle 0.6158 | test_final 0.5805 | full_best 0.6353 | deg 0.5649 | ep* 1
+    rep2 fold2: nested 0.6819 | oracle 0.6824 | test_final 0.6434 | full_best 0.6663 | deg 0.6397 | ep* 5
+    rep2 fold3: nested 0.6711 | oracle 0.6731 | test_final 0.6607 | full_best 0.6777 | deg 0.6259 | ep* 6
+    rep2 fold4: nested 0.5988 | oracle 0.5990 | test_final 0.5557 | full_best 0.6114 | deg 0.5118 | ep* 7
+  rep2 MEAN: nested 0.6333 | oracle 0.6338 | bias +0.0005 | degree 0.5701
+  -> nested 0.6441 ± 0.0094 | oracle 0.6473 | selection bias +0.0031 ± 0.0023 | degree 0.5831 | 878.8s
+  wrote ../revision_r2/results/dvmnet_r2.json (9 conditions)
+
+=== random-nohub (split=random, negatives=nohub, repeats=3) ===
+    rep0 fold0: nested 0.6170 | oracle 0.6170 | test_final 0.6033 | full_best 0.6395 | deg 0.5387 | ep* 2
+    rep0 fold1: nested 0.5681 | oracle 0.5708 | test_final 0.5708 | full_best 0.5805 | deg 0.5150 | ep* 18
+    rep0 fold2: nested 0.5608 | oracle 0.5608 | test_final 0.5435 | full_best 0.5736 | deg 0.5117 | ep* 2
+    rep0 fold3: nested 0.5821 | oracle 0.5889 | test_final 0.5284 | full_best 0.5714 | deg 0.5308 | ep* 3
+    rep0 fold4: nested 0.5932 | oracle 0.5932 | test_final 0.5893 | full_best 0.5846 | deg 0.5167 | ep* 1
+  rep0 MEAN: nested 0.5842 | oracle 0.5862 | bias +0.0019 | degree 0.5226
+    rep1 fold0: nested 0.6493 | oracle 0.6582 | test_final 0.6427 | full_best 0.6150 | deg 0.5904 | ep* 4
+    rep1 fold1: nested 0.5493 | oracle 0.5493 | test_final 0.5119 | full_best 0.6114 | deg 0.4804 | ep* 2
+    rep1 fold2: nested 0.5486 | oracle 0.5554 | test_final 0.5554 | full_best 0.5745 | deg 0.4619 | ep* 4
+    rep1 fold3: nested 0.5494 | oracle 0.5570 | test_final 0.5525 | full_best 0.5426 | deg 0.5182 | ep* 4
+    rep1 fold4: nested 0.5712 | oracle 0.5712 | test_final 0.5176 | full_best 0.5754 | deg 0.5117 | ep* 2
+  rep1 MEAN: nested 0.5735 | oracle 0.5782 | bias +0.0047 | degree 0.5125
+    rep2 fold0: nested 0.5299 | oracle 0.5299 | test_final 0.5206 | full_best 0.5475 | deg 0.4954 | ep* 1
+    rep2 fold1: nested 0.6347 | oracle 0.6371 | test_final 0.6082 | full_best 0.6339 | deg 0.5846 | ep* 2
+    rep2 fold2: nested 0.6172 | oracle 0.6277 | test_final 0.6164 | full_best 0.6145 | deg 0.5803 | ep* 1
+    rep2 fold3: nested 0.6178 | oracle 0.6283 | test_final 0.6283 | full_best 0.6109 | deg 0.5643 | ep* 3
+    rep2 fold4: nested 0.5213 | oracle 0.5319 | test_final 0.4689 | full_best 0.5579 | deg 0.4485 | ep* 5
+  rep2 MEAN: nested 0.5842 | oracle 0.5910 | bias +0.0068 | degree 0.5346
+  -> nested 0.5807 ± 0.0062 | oracle 0.5851 | selection bias +0.0044 ± 0.0024 | degree 0.5232 | 871.3s
+  wrote ../revision_r2/results/dvmnet_r2.json (10 conditions)

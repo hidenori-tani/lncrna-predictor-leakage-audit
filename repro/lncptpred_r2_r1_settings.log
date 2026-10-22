@@ -1,0 +1,45 @@
+train 1,272,012 | valid 318,004 (A 159,002 + B 159,002)
+datasets built (0s)
+./repro/venv/lib/python3.13/site-packages/lightgbm/basic.py:2535: UserWarning: Overriding the parameters from Reference Dataset.
+  _log_warning("Overriding the parameters from Reference Dataset.")
+{
+ "settings": "r1",
+ "params": {
+  "boosting": "gbdt",
+  "objective": "binary",
+  "num_threads": 4,
+  "verbose": -1,
+  "metric": "binary_logloss",
+  "bin_construct_sample_cnt": 200000,
+  "seed": 42
+ },
+ "n_train": 1272012,
+ "n_valid": 318004,
+ "n_A": 159002,
+ "n_B": 159002,
+ "iterations_run": 200,
+ "fit_seconds": 221.8,
+ "valid_logloss_final": 0.5432816272959199,
+ "auroc_at_iteration": {
+  "200": {
+   "A": 0.7962983628438762,
+   "B": 0.7970781523721285,
+   "union": 0.7966886764986357,
+   "union_logloss": 0.5432816272959216
+  }
+ },
+ "gc_matched_eval": {
+  "n": 261600,
+  "auroc": 0.7471604869820161,
+  "auroc_unmatched": 0.7966886764986357,
+  "gc_only_unmatched": 0.6272880427923041,
+  "gc_only_matched": 0.5018387448680901
+ },
+ "length_matched_eval": {
+  "n": 272670,
+  "auroc": 0.7874397174267833,
+  "auroc_unmatched": 0.7966886764986357,
+  "length_only_unmatched": 0.5284872842027251,
+  "length_only_matched": 0.5000000000000001
+ }
+}

@@ -1,0 +1,111 @@
+[LightGBM] [Warning] Ignoring unrecognized parameter 'max_conflict_rate' found in model string.
+[LightGBM] [Warning] Ignoring unrecognized parameter 'sparse_threshold' found in model string.
+[LightGBM] [Warning] Ignoring unrecognized parameter 'max_position' found in model string.
+[LightGBM] [Warning] Ignoring unrecognized parameter 'lambdamart_norm' found in model string.
+released model loaded: 10,596 trees (0s)
+  scored 50,000/1,590,016  (35s)
+  scored 100,000/1,590,016  (68s)
+  scored 150,000/1,590,016  (101s)
+  scored 200,000/1,590,016  (134s)
+  scored 250,000/1,590,016  (167s)
+  scored 300,000/1,590,016  (200s)
+  scored 350,000/1,590,016  (232s)
+  scored 400,000/1,590,016  (265s)
+  scored 450,000/1,590,016  (297s)
+  scored 500,000/1,590,016  (330s)
+  scored 550,000/1,590,016  (362s)
+  scored 600,000/1,590,016  (395s)
+  scored 650,000/1,590,016  (428s)
+  scored 700,000/1,590,016  (460s)
+  scored 750,000/1,590,016  (492s)
+  scored 800,000/1,590,016  (525s)
+  scored 850,000/1,590,016  (557s)
+  scored 900,000/1,590,016  (590s)
+  scored 950,000/1,590,016  (623s)
+  scored 1,000,000/1,590,016  (656s)
+  scored 1,050,000/1,590,016  (688s)
+  scored 1,100,000/1,590,016  (721s)
+  scored 1,150,000/1,590,016  (753s)
+  scored 1,200,000/1,590,016  (786s)
+  scored 1,250,000/1,590,016  (818s)
+  scored 1,300,000/1,590,016  (850s)
+  scored 1,350,000/1,590,016  (884s)
+  scored 1,400,000/1,590,016  (918s)
+  scored 1,450,000/1,590,016  (951s)
+  scored 1,500,000/1,590,016  (983s)
+  scored 1,550,000/1,590,016  (1017s)
+  scored 1,590,016/1,590,016  (1043s)
+{
+ "n_scored": 1590016,
+ "auroc_all_rows": 0.9766906455349647,
+ "logloss_all_rows": 0.26254361739104554,
+ "expected_logloss_if_features_match": 0.2622980399689716,
+ "leaf_count_checks": [
+  {
+   "tree": 0,
+   "n_leaves": 204,
+   "stored_total": 1272014,
+   "ours_total": 1590016,
+   "ratio_overall": 0.8000007547093866,
+   "ratio_median_leaves_ge1000": 0.8001427551748751,
+   "ratio_p05_p95_leaves_ge1000": [
+    0.7906678753324825,
+    0.8105332858449734
+   ],
+   "leaves_with_more_stored_than_ours": 0
+  },
+  {
+   "tree": 1,
+   "n_leaves": 204,
+   "stored_total": 1272014,
+   "ours_total": 1590016,
+   "ratio_overall": 0.8000007547093866,
+   "ratio_median_leaves_ge1000": 0.7999231190442809,
+   "ratio_p05_p95_leaves_ge1000": [
+    0.7918092678277076,
+    0.8111113344859475
+   ],
+   "leaves_with_more_stored_than_ours": 0
+  },
+  {
+   "tree": 2,
+   "n_leaves": 204,
+   "stored_total": 1272014,
+   "ours_total": 1590016,
+   "ratio_overall": 0.8000007547093866,
+   "ratio_median_leaves_ge1000": 0.799523241954708,
+   "ratio_p05_p95_leaves_ge1000": [
+    0.7899174787476674,
+    0.8096503717766176
+   ],
+   "leaves_with_more_stored_than_ours": 0
+  },
+  {
+   "tree": 3,
+   "n_leaves": 204,
+   "stored_total": 1272014,
+   "ours_total": 1590016,
+   "ratio_overall": 0.8000007547093866,
+   "ratio_median_leaves_ge1000": 0.7995737315166447,
+   "ratio_p05_p95_leaves_ge1000": [
+    0.7907695488126599,
+    0.8096096213447581
+   ],
+   "leaves_with_more_stored_than_ours": 0
+  },
+  {
+   "tree": 4,
+   "n_leaves": 204,
+   "stored_total": 1272014,
+   "ours_total": 1590016,
+   "ratio_overall": 0.8000007547093866,
+   "ratio_median_leaves_ge1000": 0.800103519668737,
+   "ratio_p05_p95_leaves_ge1000": [
+    0.7905140217032924,
+    0.8096380521585973
+   ],
+   "leaves_with_more_stored_than_ours": 0
+  }
+ ],
+ "seconds": 1043.0
+}

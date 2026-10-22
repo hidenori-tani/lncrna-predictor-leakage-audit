@@ -1,0 +1,139 @@
+train 1,272,012 | valid 318,004 (A 159,002 + B 159,002)
+datasets built (0s)
+./repro/venv/lib/python3.13/site-packages/lightgbm/basic.py:2535: UserWarning: Overriding the parameters from Reference Dataset.
+  _log_warning("Overriding the parameters from Reference Dataset.")
+  it    250 | A 0.53346 | B 0.53276 | union 0.53311 | 382s
+  it    500 | A 0.51901 | B 0.51837 | union 0.51869 | 655s
+  it    750 | A 0.51247 | B 0.51183 | union 0.51215 | 888s
+  it   1000 | A 0.50907 | B 0.50834 | union 0.50871 | 1070s
+  it   1250 | A 0.50667 | B 0.50589 | union 0.50628 | 1235s
+  it   1500 | A 0.50479 | B 0.50392 | union 0.50436 | 1390s
+  it   1750 | A 0.50307 | B 0.50213 | union 0.50260 | 1536s
+  it   2000 | A 0.50165 | B 0.50073 | union 0.50119 | 1679s
+  it   2250 | A 0.50036 | B 0.49946 | union 0.49991 | 1818s
+  it   2500 | A 0.49922 | B 0.49825 | union 0.49874 | 1956s
+  it   2750 | A 0.49824 | B 0.49724 | union 0.49774 | 2090s
+  it   3000 | A 0.49729 | B 0.49628 | union 0.49678 | 2232s
+  it   3250 | A 0.49632 | B 0.49538 | union 0.49585 | 2366s
+  it   3500 | A 0.49551 | B 0.49456 | union 0.49503 | 2497s
+  it   3750 | A 0.49481 | B 0.49380 | union 0.49431 | 2625s
+  it   4000 | A 0.49412 | B 0.49311 | union 0.49361 | 2750s
+  it   4250 | A 0.49347 | B 0.49250 | union 0.49299 | 2879s
+  it   4500 | A 0.49291 | B 0.49182 | union 0.49236 | 3002s
+  it   4750 | A 0.49230 | B 0.49116 | union 0.49173 | 3128s
+  it   5000 | A 0.49170 | B 0.49056 | union 0.49113 | 3255s
+  it   5250 | A 0.49124 | B 0.49006 | union 0.49065 | 3380s
+  it   5500 | A 0.49080 | B 0.48961 | union 0.49020 | 3513s
+  it   5750 | A 0.49039 | B 0.48913 | union 0.48976 | 3637s
+  it   6000 | A 0.48997 | B 0.48876 | union 0.48936 | 3764s
+  it   6250 | A 0.48955 | B 0.48836 | union 0.48895 | 3889s
+  it   6500 | A 0.48915 | B 0.48798 | union 0.48856 | 4021s
+  it   6750 | A 0.48882 | B 0.48762 | union 0.48822 | 4146s
+  it   7000 | A 0.48852 | B 0.48728 | union 0.48790 | 4275s
+  it   7250 | A 0.48827 | B 0.48700 | union 0.48763 | 4406s
+  it   7500 | A 0.48798 | B 0.48673 | union 0.48736 | 4553s
+  it   7750 | A 0.48774 | B 0.48647 | union 0.48710 | 4723s
+  it   8000 | A 0.48755 | B 0.48625 | union 0.48690 | 4867s
+  it   8250 | A 0.48730 | B 0.48601 | union 0.48666 | 5014s
+  it   8500 | A 0.48710 | B 0.48583 | union 0.48646 | 5203s
+  it   8750 | A 0.48687 | B 0.48560 | union 0.48624 | 5354s
+  it   9000 | A 0.48674 | B 0.48538 | union 0.48606 | 5529s
+  it   9250 | A 0.48652 | B 0.48523 | union 0.48588 | 5739s
+  it   9500 | A 0.48637 | B 0.48511 | union 0.48574 | 5925s
+  it   9750 | A 0.48627 | B 0.48501 | union 0.48564 | 6111s
+  it  10000 | A 0.48610 | B 0.48482 | union 0.48546 | 6270s
+  it  10250 | A 0.48604 | B 0.48469 | union 0.48536 | 6423s
+  it  10500 | A 0.48600 | B 0.48462 | union 0.48531 | 6559s
+  it  10750 | A 0.48588 | B 0.48454 | union 0.48521 | 6699s
+{
+ "settings": "original",
+ "params": {
+  "boosting": "gbdt",
+  "objective": "binary",
+  "num_leaves": 204,
+  "max_depth": 14,
+  "learning_rate": 0.03444081993284159,
+  "min_data_in_leaf": 13,
+  "min_sum_hessian_in_leaf": 0.001,
+  "min_gain_to_split": 0.0,
+  "feature_fraction": 0.7274007249599967,
+  "lambda_l1": 3.070346559732223,
+  "lambda_l2": 3.0935935089398225,
+  "bagging_fraction": 0.572447599448142,
+  "bagging_freq": 0,
+  "num_threads": 4,
+  "verbose": -1,
+  "metric": "binary_logloss",
+  "bin_construct_sample_cnt": 250000
+ },
+ "n_train": 1272012,
+ "n_valid": 318004,
+ "n_A": 159002,
+ "n_B": 159002,
+ "iterations_run": 10939,
+ "fit_seconds": 6803.7,
+ "early_stopping": {
+  "union": {
+   "best": 10474,
+   "stop": 10524,
+   "logloss": 0.48529417547045883
+  },
+  "A": {
+   "best": 10888,
+   "stop": 10938,
+   "logloss": 0.48583544930626554
+  },
+  "B": {
+   "best": 10244,
+   "stop": 10294,
+   "logloss": 0.4846808067181823
+  }
+ },
+ "auroc_at_iteration": {
+  "10244": {
+   "A": 0.8424573346689339,
+   "B": 0.8433762566078625,
+   "union": 0.8429179193591355,
+   "union_logloss": 0.4853573956345353
+  },
+  "10474": {
+   "A": 0.8425411017162748,
+   "B": 0.843471055536448,
+   "union": 0.8430072461733127,
+   "union_logloss": 0.48529417547045933
+  },
+  "10888": {
+   "A": 0.8427360940023445,
+   "B": 0.8436353849338755,
+   "union": 0.8431867299694624,
+   "union_logloss": 0.4851707722988291
+  }
+ },
+ "as_released_protocol": 0.8430072461733127,
+ "nested": {
+  "stop_on_A_score_B": 0.8436353849338755,
+  "stop_on_B_score_A": 0.8424573346689339,
+  "mean": 0.8430463598014046
+ },
+ "selection_effect": -4.028117504328854e-05,
+ "reproduction_check": {
+  "our_valid_logloss": 0.48529417547045883,
+  "released_valid_logloss": 0.4825826409413437,
+  "our_best_iteration": 10474,
+  "released_best_iteration": 10596
+ },
+ "gc_matched_eval": {
+  "n": 261600,
+  "auroc": 0.810389009295888,
+  "auroc_unmatched": 0.8430072461733127,
+  "gc_only_unmatched": 0.6272880427923041,
+  "gc_only_matched": 0.5018387448680901
+ },
+ "length_matched_eval": {
+  "n": 272670,
+  "auroc": 0.8332353896762056,
+  "auroc_unmatched": 0.8430072461733127,
+  "length_only_unmatched": 0.5284872842027251,
+  "length_only_matched": 0.5000000000000001
+ }
+}

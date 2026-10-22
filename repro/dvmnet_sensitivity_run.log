@@ -1,0 +1,110 @@
+
+=== cold-alpha0.5 (split=cold, negatives=alpha0.5, repeats=3) ===
+    rep0 fold0: nested 0.6366 | oracle 0.6973 | test_final 0.6291 | full_best 0.6371 | deg 0.4326 | ep* 9
+    rep0 fold1: nested 0.6367 | oracle 0.6403 | test_final 0.3256 | full_best 0.6383 | deg 0.3964 | ep* 11
+    rep0 fold2: nested 0.5283 | oracle 0.5710 | test_final 0.4883 | full_best 0.5917 | deg 0.3999 | ep* 11
+    rep0 fold3: nested 0.5497 | oracle 0.5623 | test_final 0.4407 | full_best 0.6278 | deg 0.3456 | ep* 13
+    rep0 fold4: nested 0.5763 | oracle 0.6131 | test_final 0.4010 | full_best 0.6389 | deg 0.4663 | ep* 11
+  rep0 MEAN: nested 0.5855 | oracle 0.6168 | bias +0.0313 | degree 0.4082
+    rep1 fold0: nested 0.6165 | oracle 0.6165 | test_final 0.3302 | full_best 0.6220 | deg 0.4127 | ep* 12
+    rep1 fold1: nested 0.6220 | oracle 0.6244 | test_final 0.5679 | full_best 0.6267 | deg 0.4190 | ep* 13
+    rep1 fold2: nested 0.7027 | oracle 0.7066 | test_final 0.5260 | full_best 0.6841 | deg 0.4628 | ep* 14
+    rep1 fold3: nested 0.5824 | oracle 0.5824 | test_final 0.5594 | full_best 0.6006 | deg 0.4465 | ep* 16
+    rep1 fold4: nested 0.5412 | oracle 0.5709 | test_final 0.5101 | full_best 0.5802 | deg 0.3146 | ep* 13
+  rep1 MEAN: nested 0.6130 | oracle 0.6201 | bias +0.0072 | degree 0.4111
+    rep2 fold0: nested 0.5599 | oracle 0.5633 | test_final 0.3426 | full_best 0.5511 | deg 0.4864 | ep* 7
+    rep2 fold1: nested 0.6045 | oracle 0.6221 | test_final 0.4019 | full_best 0.6252 | deg 0.4287 | ep* 3
+    rep2 fold2: nested 0.5037 | oracle 0.5425 | test_final 0.4705 | full_best 0.5805 | deg 0.4228 | ep* 11
+    rep2 fold3: nested 0.6448 | oracle 0.6448 | test_final 0.5865 | full_best 0.6124 | deg 0.3783 | ep* 14
+    rep2 fold4: nested 0.5669 | oracle 0.5887 | test_final 0.3706 | full_best 0.5978 | deg 0.4386 | ep* 16
+  rep2 MEAN: nested 0.5759 | oracle 0.5923 | bias +0.0163 | degree 0.4310
+  -> nested 0.5915 ± 0.0192 | oracle 0.6097 | selection bias +0.0183 ± 0.0122 | degree 0.4167 | 1053.3s
+  wrote dvmnet_sensitivity_results.json (1 conditions)
+
+=== cold-joint (split=cold, negatives=joint, repeats=3) ===
+    rep0 fold0: nested 0.6245 | oracle 0.7115 | test_final 0.7039 | full_best 0.6145 | deg 0.4186 | ep* 8
+    rep0 fold1: nested 0.5788 | oracle 0.5988 | test_final 0.3533 | full_best 0.5861 | deg 0.3594 | ep* 10
+    rep0 fold2: nested 0.6676 | oracle 0.6676 | test_final 0.4919 | full_best 0.6266 | deg 0.4390 | ep* 5
+    rep0 fold3: nested 0.5806 | oracle 0.5865 | test_final 0.4014 | full_best 0.5570 | deg 0.3375 | ep* 10
+    rep0 fold4: nested 0.4226 | oracle 0.4960 | test_final 0.4237 | full_best 0.6323 | deg 0.3599 | ep* 10
+  rep0 MEAN: nested 0.5748 | oracle 0.6121 | bias +0.0373 | degree 0.3829
+    rep1 fold0: nested 0.5293 | oracle 0.6151 | test_final 0.3613 | full_best 0.6068 | deg 0.3614 | ep* 7
+    rep1 fold1: nested 0.5240 | oracle 0.5358 | test_final 0.5121 | full_best 0.5687 | deg 0.3421 | ep* 7
+    rep1 fold2: nested 0.6099 | oracle 0.6940 | test_final 0.5196 | full_best 0.6621 | deg 0.3918 | ep* 8
+    rep1 fold3: nested 0.5526 | oracle 0.5798 | test_final 0.5563 | full_best 0.5860 | deg 0.3787 | ep* 15
+    rep1 fold4: nested 0.5412 | oracle 0.5812 | test_final 0.4425 | full_best 0.5580 | deg 0.3440 | ep* 12
+  rep1 MEAN: nested 0.5514 | oracle 0.6012 | bias +0.0498 | degree 0.3636
+    rep2 fold0: nested 0.4781 | oracle 0.4892 | test_final 0.4115 | full_best 0.5246 | deg 0.3453 | ep* 4
+    rep2 fold1: nested 0.5595 | oracle 0.5739 | test_final 0.4257 | full_best 0.5805 | deg 0.3684 | ep* 3
+    rep2 fold2: nested 0.5889 | oracle 0.5998 | test_final 0.4360 | full_best 0.5719 | deg 0.3885 | ep* 11
+    rep2 fold3: nested 0.5672 | oracle 0.5796 | test_final 0.4999 | full_best 0.5748 | deg 0.3593 | ep* 14
+    rep2 fold4: nested 0.5394 | oracle 0.5414 | test_final 0.4117 | full_best 0.5582 | deg 0.4078 | ep* 13
+  rep2 MEAN: nested 0.5466 | oracle 0.5568 | bias +0.0102 | degree 0.3738
+  -> nested 0.5576 ± 0.0151 | oracle 0.5900 | selection bias +0.0324 ± 0.0203 | degree 0.3734 | 1030.4s
+  wrote dvmnet_sensitivity_results.json (2 conditions)
+
+=== cold-nohub (split=cold, negatives=nohub, repeats=3) ===
+    rep0 fold0: nested 0.6697 | oracle 0.6845 | test_final 0.3850 | full_best 0.6357 | deg 0.4459 | ep* 7
+    rep0 fold1: nested 0.5987 | oracle 0.6298 | test_final 0.3521 | full_best 0.6186 | deg 0.4060 | ep* 8
+    rep0 fold2: nested 0.6360 | oracle 0.6467 | test_final 0.4006 | full_best 0.6333 | deg 0.4418 | ep* 4
+    rep0 fold3: nested 0.5170 | oracle 0.5463 | test_final 0.4210 | full_best 0.5561 | deg 0.3205 | ep* 10
+    rep0 fold4: nested 0.6330 | oracle 0.6365 | test_final 0.3699 | full_best 0.6263 | deg 0.4438 | ep* 6
+  rep0 MEAN: nested 0.6109 | oracle 0.6288 | bias +0.0179 | degree 0.4116
+    rep1 fold0: nested 0.6136 | oracle 0.6379 | test_final 0.3482 | full_best 0.6193 | deg 0.3970 | ep* 5
+    rep1 fold1: nested 0.5981 | oracle 0.6043 | test_final 0.4764 | full_best 0.5925 | deg 0.4094 | ep* 10
+    rep1 fold2: nested 0.6088 | oracle 0.6389 | test_final 0.3966 | full_best 0.6255 | deg 0.4492 | ep* 11
+    rep1 fold3: nested 0.5667 | oracle 0.5693 | test_final 0.3961 | full_best 0.6177 | deg 0.4353 | ep* 13
+    rep1 fold4: nested 0.5496 | oracle 0.5985 | test_final 0.4484 | full_best 0.5762 | deg 0.3546 | ep* 7
+  rep1 MEAN: nested 0.5874 | oracle 0.6098 | bias +0.0224 | degree 0.4091
+    rep2 fold0: nested 0.5373 | oracle 0.5697 | test_final 0.3632 | full_best 0.5879 | deg 0.4497 | ep* 1
+    rep2 fold1: nested 0.5605 | oracle 0.5951 | test_final 0.4487 | full_best 0.5793 | deg 0.4191 | ep* 6
+    rep2 fold2: nested 0.5763 | oracle 0.5985 | test_final 0.4279 | full_best 0.6183 | deg 0.4451 | ep* 7
+    rep2 fold3: nested 0.6365 | oracle 0.6407 | test_final 0.3554 | full_best 0.6212 | deg 0.4034 | ep* 8
+    rep2 fold4: nested 0.6470 | oracle 0.6470 | test_final 0.3748 | full_best 0.6363 | deg 0.4912 | ep* 9
+  rep2 MEAN: nested 0.5915 | oracle 0.6102 | bias +0.0187 | degree 0.4417
+  -> nested 0.5966 ± 0.0125 | oracle 0.6163 | selection bias +0.0197 ± 0.0024 | degree 0.4208 | 1086.7s
+  wrote dvmnet_sensitivity_results.json (3 conditions)
+
+=== random-joint (split=random, negatives=joint, repeats=3) ===
+    rep0 fold0: nested 0.7038 | oracle 0.7075 | test_final 0.6792 | full_best 0.6942 | deg 0.6574 | ep* 3
+    rep0 fold1: nested 0.6284 | oracle 0.6339 | test_final 0.5929 | full_best 0.6460 | deg 0.5760 | ep* 3
+    rep0 fold2: nested 0.6372 | oracle 0.6380 | test_final 0.5938 | full_best 0.6239 | deg 0.5934 | ep* 3
+    rep0 fold3: nested 0.6590 | oracle 0.6625 | test_final 0.5881 | full_best 0.6502 | deg 0.5880 | ep* 4
+    rep0 fold4: nested 0.5974 | oracle 0.5992 | test_final 0.5759 | full_best 0.6354 | deg 0.5438 | ep* 3
+  rep0 MEAN: nested 0.6452 | oracle 0.6482 | bias +0.0031 | degree 0.5917
+    rep1 fold0: nested 0.6953 | oracle 0.6970 | test_final 0.6624 | full_best 0.6680 | deg 0.6369 | ep* 6
+    rep1 fold1: nested 0.6211 | oracle 0.6289 | test_final 0.5765 | full_best 0.6652 | deg 0.5668 | ep* 2
+    rep1 fold2: nested 0.6169 | oracle 0.6185 | test_final 0.5800 | full_best 0.6442 | deg 0.5348 | ep* 6
+    rep1 fold3: nested 0.6408 | oracle 0.6460 | test_final 0.5915 | full_best 0.6168 | deg 0.5914 | ep* 4
+    rep1 fold4: nested 0.6380 | oracle 0.6389 | test_final 0.5910 | full_best 0.6333 | deg 0.6066 | ep* 3
+  rep1 MEAN: nested 0.6424 | oracle 0.6459 | bias +0.0034 | degree 0.5873
+    rep2 fold0: nested 0.5927 | oracle 0.5927 | test_final 0.5247 | full_best 0.6016 | deg 0.5085 | ep* 2
+    rep2 fold1: nested 0.6157 | oracle 0.6157 | test_final 0.5813 | full_best 0.6350 | deg 0.5649 | ep* 1
+    rep2 fold2: nested 0.6717 | oracle 0.6774 | test_final 0.6397 | full_best 0.6605 | deg 0.6397 | ep* 2
+    rep2 fold3: nested 0.6700 | oracle 0.6709 | test_final 0.6546 | full_best 0.6738 | deg 0.6259 | ep* 6
+    rep2 fold4: nested 0.5871 | oracle 0.5876 | test_final 0.5375 | full_best 0.6036 | deg 0.5118 | ep* 4
+  rep2 MEAN: nested 0.6274 | oracle 0.6289 | bias +0.0014 | degree 0.5701
+  -> nested 0.6383 ± 0.0095 | oracle 0.6410 | selection bias +0.0026 ± 0.0011 | degree 0.5831 | 1083.7s
+  wrote dvmnet_sensitivity_results.json (4 conditions)
+
+=== random-nohub (split=random, negatives=nohub, repeats=3) ===
+    rep0 fold0: nested 0.6101 | oracle 0.6110 | test_final 0.5910 | full_best 0.6407 | deg 0.5387 | ep* 2
+    rep0 fold1: nested 0.5575 | oracle 0.5586 | test_final 0.5562 | full_best 0.5697 | deg 0.5150 | ep* 15
+    rep0 fold2: nested 0.5567 | oracle 0.5567 | test_final 0.5459 | full_best 0.5693 | deg 0.5117 | ep* 1
+    rep0 fold3: nested 0.5848 | oracle 0.5862 | test_final 0.5274 | full_best 0.5672 | deg 0.5308 | ep* 2
+    rep0 fold4: nested 0.5949 | oracle 0.5949 | test_final 0.5572 | full_best 0.5864 | deg 0.5167 | ep* 1
+  rep0 MEAN: nested 0.5808 | oracle 0.5815 | bias +0.0007 | degree 0.5226
+    rep1 fold0: nested 0.6110 | oracle 0.6462 | test_final 0.6172 | full_best 0.5870 | deg 0.5904 | ep* 1
+    rep1 fold1: nested 0.5440 | oracle 0.5440 | test_final 0.5060 | full_best 0.6064 | deg 0.4804 | ep* 2
+    rep1 fold2: nested 0.5107 | oracle 0.5381 | test_final 0.5381 | full_best 0.5500 | deg 0.4619 | ep* 4
+    rep1 fold3: nested 0.5418 | oracle 0.5467 | test_final 0.5365 | full_best 0.5346 | deg 0.5182 | ep* 4
+    rep1 fold4: nested 0.5657 | oracle 0.5657 | test_final 0.5114 | full_best 0.5722 | deg 0.5117 | ep* 2
+  rep1 MEAN: nested 0.5546 | oracle 0.5681 | bias +0.0135 | degree 0.5125
+    rep2 fold0: nested 0.5320 | oracle 0.5349 | test_final 0.5074 | full_best 0.5498 | deg 0.4954 | ep* 1
+    rep2 fold1: nested 0.6343 | oracle 0.6374 | test_final 0.5956 | full_best 0.6337 | deg 0.5846 | ep* 2
+    rep2 fold2: nested 0.6078 | oracle 0.6161 | test_final 0.6087 | full_best 0.6103 | deg 0.5803 | ep* 2
+    rep2 fold3: nested 0.6142 | oracle 0.6252 | test_final 0.6214 | full_best 0.6064 | deg 0.5643 | ep* 1
+    rep2 fold4: nested 0.5120 | oracle 0.5199 | test_final 0.4664 | full_best 0.5440 | deg 0.4485 | ep* 5
+  rep2 MEAN: nested 0.5800 | oracle 0.5867 | bias +0.0067 | degree 0.5346
+  -> nested 0.5718 ± 0.0149 | oracle 0.5788 | selection bias +0.0069 ± 0.0064 | degree 0.5232 | 1077.3s
+  wrote dvmnet_sensitivity_results.json (5 conditions)

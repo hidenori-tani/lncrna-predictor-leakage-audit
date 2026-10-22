@@ -1,0 +1,200 @@
+{
+  "sha": "621391287402cad35a8dadc1659fdd632148d24f",
+  "url": "https://api.github.com/repos/zglabDIB/lncptpred/git/trees/621391287402cad35a8dadc1659fdd632148d24f",
+  "tree": [
+    {
+      "path": "Readme.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4661ac1d4d04e5ec2a5c1488689746fccc393d04",
+      "size": 3812,
+      "url": "https://api.github.com/repos/zglabDIB/lncptpred/git/blobs/4661ac1d4d04e5ec2a5c1488689746fccc393d04"
+    },
+    {
+      "path": "dataset",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "0d9462c5543ff43813c565c3b7bc2f1cd5773e7f",
+      "url": "https://api.github.com/repos/zglabDIB/lncptpred/git/trees/0d9462c5543ff43813c565c3b7bc2f1cd5773e7f"
+    },
+    {
+      "path": "dataset/Final_Protein.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1799f6a64c1b293c1d340b441430f418eb1b3b83",
+      "size": 49105,
+      "url": "https://api.github.com/repos/zglabDIB/lncptpred/git/blobs/1799f6a64c1b293c1d340b441430f418eb1b3b83"
+    },
+    {
+      "path": "dataset/Final_lncRNA_Protein_Interaction.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c38d51b56e55a5411aa9fe0a55327933184d8997",
+      "size": 82573846,
+      "url": "https://api.github.com/repos/zglabDIB/lncptpred/git/blobs/c38d51b56e55a5411aa9fe0a55327933184d8997"
+    },
+    {
+      "path": "example",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "c6e392c94024d7fb0c1d776d399ad146ea08bd87",
+      "url": "https://api.github.com/repos/zglabDIB/lncptpred/git/trees/c6e392c94024d7fb0c1d776d399ad146ea08bd87"
+    },
+    {
+      "path": "example/lncrna_seq.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fb1de828d0be0aadb15a4e2662c3155617bd2911",
+      "size": 665,
+      "url": "https://api.github.com/repos/zglabDIB/lncptpred/git/blobs/fb1de828d0be0aadb15a4e2662c3155617bd2911"
+    },
+    {
+      "path": "img",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "a91e8311313173660bfd5328726cf82b2706f09b",
+      "url": "https://api.github.com/repos/zglabDIB/lncptpred/git/trees/a91e8311313173660bfd5328726cf82b2706f09b"
+    },
+    {
+      "path": "img/no_interaction.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "74d07272f762b67857cb752135ed4f6ba9a38dd0",
+      "size": 102702,
+      "url": "https://api.github.com/repos/zglabDIB/lncptpred/git/blobs/74d07272f762b67857cb752135ed4f6ba9a38dd0"
+    },
+    {
+      "path": "init.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8fba3a49af2726d5df8280d4855e52e3a2a01075",
+      "size": 141,
+      "url": "https://api.github.com/repos/zglabDIB/lncptpred/git/blobs/8fba3a49af2726d5df8280d4855e52e3a2a01075"
+    },
+    {
+      "path": "input",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "1fdc2e1265aae3456113a26cfe1593101f9e0d64",
+      "url": "https://api.github.com/repos/zglabDIB/lncptpred/git/trees/1fdc2e1265aae3456113a26cfe1593101f9e0d64"
+    },
+    {
+      "path": "input/placeholder.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e49d545e0adb6f36af8858b1b37079922b924de3",
+      "size": 26,
+      "url": "https://api.github.com/repos/zglabDIB/lncptpred/git/blobs/e49d545e0adb6f36af8858b1b37079922b924de3"
+    },
+    {
+      "path": "models",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "6039f865fb1ca0a3d95b42ec5ec61ef2f51df7e5",
+      "url": "https://api.github.com/repos/zglabDIB/lncptpred/git/trees/6039f865fb1ca0a3d95b42ec5ec61ef2f51df7e5"
+    },
+    {
+      "path": "models/models.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f7ecdf34a73ea00685a04d5c8ff5331d4ee220d5",
+      "size": 95156150,
+      "url": "https://api.github.com/repos/zglabDIB/lncptpred/git/blobs/f7ecdf34a73ea00685a04d5c8ff5331d4ee220d5"
+    },
+    {
+      "path": "output",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "1fdc2e1265aae3456113a26cfe1593101f9e0d64",
+      "url": "https://api.github.com/repos/zglabDIB/lncptpred/git/trees/1fdc2e1265aae3456113a26cfe1593101f9e0d64"
+    },
+    {
+      "path": "output/placeholder.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e49d545e0adb6f36af8858b1b37079922b924de3",
+      "size": 26,
+      "url": "https://api.github.com/repos/zglabDIB/lncptpred/git/blobs/e49d545e0adb6f36af8858b1b37079922b924de3"
+    },
+    {
+      "path": "requirement.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fd649743c2ea0cde2d338ac0620fd271fe9587c3",
+      "size": 128,
+      "url": "https://api.github.com/repos/zglabDIB/lncptpred/git/blobs/fd649743c2ea0cde2d338ac0620fd271fe9587c3"
+    },
+    {
+      "path": "src",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "3cf165ca6227fad6f22d7046e2fccb6ccae7d807",
+      "url": "https://api.github.com/repos/zglabDIB/lncptpred/git/trees/3cf165ca6227fad6f22d7046e2fccb6ccae7d807"
+    },
+    {
+      "path": "src/gen_lncrna_feat.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2c9d81097e721a747bb2ab77266f802ce1ee3631",
+      "size": 3881,
+      "url": "https://api.github.com/repos/zglabDIB/lncptpred/git/blobs/2c9d81097e721a747bb2ab77266f802ce1ee3631"
+    },
+    {
+      "path": "src/gen_logo.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "60a8e8db1a9e9ec66e166cd95e9d2bd605c99b1b",
+      "size": 1080,
+      "url": "https://api.github.com/repos/zglabDIB/lncptpred/git/blobs/60a8e8db1a9e9ec66e166cd95e9d2bd605c99b1b"
+    },
+    {
+      "path": "src/gen_protein_feat.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3bb4984fcc0c2979eac5f44b27985aaedacd1d32",
+      "size": 4310,
+      "url": "https://api.github.com/repos/zglabDIB/lncptpred/git/blobs/3bb4984fcc0c2979eac5f44b27985aaedacd1d32"
+    },
+    {
+      "path": "src/intermediate_interactions.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "11605ae3768fae451cf075886b1ee5900c0b6d75",
+      "size": 884,
+      "url": "https://api.github.com/repos/zglabDIB/lncptpred/git/blobs/11605ae3768fae451cf075886b1ee5900c0b6d75"
+    },
+    {
+      "path": "src/main.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a2db891e2803765c09b40049c122e1836efeeb50",
+      "size": 3082,
+      "url": "https://api.github.com/repos/zglabDIB/lncptpred/git/blobs/a2db891e2803765c09b40049c122e1836efeeb50"
+    },
+    {
+      "path": "src/merged_features.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0588fdd65bd611b945f09b09e353609c4636b18d",
+      "size": 443,
+      "url": "https://api.github.com/repos/zglabDIB/lncptpred/git/blobs/0588fdd65bd611b945f09b09e353609c4636b18d"
+    },
+    {
+      "path": "src/predict_interactions.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8e4bda5cb50cbab42460c5a1eac0738d7596edd9",
+      "size": 2636,
+      "url": "https://api.github.com/repos/zglabDIB/lncptpred/git/blobs/8e4bda5cb50cbab42460c5a1eac0738d7596edd9"
+    },
+    {
+      "path": "src/split_seq.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3878e28f2fb20e73ff054f7ce0eb7f8f33386e57",
+      "size": 985,
+      "url": "https://api.github.com/repos/zglabDIB/lncptpred/git/blobs/3878e28f2fb20e73ff054f7ce0eb7f8f33386e57"
+    }
+  ],
+  "truncated": false
+}

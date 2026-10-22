@@ -1,141 +1,112 @@
-# Protocol ablation — audit code for three lncRNA machine-learning predictors
+# What lncRNA predictors measure — audit code for three published lncRNA predictors
 
-Reproduction code for:
+Reproduction code and derived results for:
 
-> Tani H. *Protocol Ablation: Attributing the Reported Performance of lncRNA
-> Machine-Learning Predictors to Evaluation Artifacts.* (submitted, 2026).
+> Tani H. *What lncRNA predictors measure: node degree, sequence composition, and the evaluation
+> protocol.* Statistical Applications in Genetics and Molecular Biology (under review, manuscript
+> SAGMB.2026.0060).
 
-A reported benchmark score is a joint property of a model and its evaluation protocol.
-**Protocol ablation** re-runs the published model itself under a factorial ladder of
-counterfactual protocols — each closing exactly one defect — so the reported score can be
-*attributed* rather than merely doubted.
+A reported benchmark score is a property of a model evaluated under a protocol — a split, a
+negative-sampling scheme and a rule for choosing the checkpoint — not of the model alone. The paper
+asks four questions of each of three benchmarks and answers each with one stated comparison:
 
-Three audited predictors, one collapse and two non-collapses:
-
-| Predictor | Task | Result under the ladder |
+| question | comparison | what it permits |
 |---|---|---|
-| **RNAlight** (Yuan et al. 2023) | nuclear/cytoplasmic localization | does **not** collapse; homology-aware splitting is inert (ΔAUROC < 0.01) |
-| **DVMnet** (Wei et al. 2025) | lncRNA–miRNA interaction | **collapses**: 0.803 → 0.510 (chance) when only the negatives are fixed |
-| **LncPTPred** (Das et al. 2025) | lncRNA–protein interaction | does **not** collapse; GC-matching costs only 0.031 |
+| Q1. What does the benchmark reward that is not the biology the task names? | models restricted to node degree, node identity, length or composition, scored under the published protocol | a floor for that benchmark and protocol |
+| Q2. Does the published model's score survive when that information is neutralized? | the split fixed, the negatives or the evaluation set changed so that the Q1 models fall to chance; every model family run through the same change | performance on a different, harder target — not a corrected estimate |
+| Q3. Which generalization setting does the reported score describe? | the model and negatives fixed, the split changed (edges → entities; random → homology-aware) | the scope of the reported score |
+| Q4. Does the protocol contain defects that bias the score for any target? | one defect removed at a time | a demonstrated inflation |
 
-Everything runs on **CPU** (no GPU).
+On every benchmark several model families that differ in the information they can use run through the
+identical comparisons on the same folds and the same sampled negatives, so that each benchmark is its
+own control. Conclusions are specific to each benchmark; the three are not compared with one another.
 
-## 1. Data sources — we redistribute none of the audited data
+Everything runs on a CPU.
 
-This study analyzes only publicly available data, obtained from the original authors:
+## 1. Data — none of the audited data or models is redistributed
 
-| Predictor | Upstream repository |
+| predictor | task | upstream repository |
+|---|---|---|
+| RNAlight (Yuan et al. 2023) | nuclear vs cytoplasmic localization | https://github.com/YangLab/RNAlight |
+| DVMnet (Wei et al. 2025) | lncRNA–miRNA interaction | https://github.com/liuliwei1980/DVMnet |
+| LncPTPred (Das et al. 2025) | lncRNA–protein interaction | https://github.com/zglabDIB/lncptpred |
+
+The harness reads a clone of each repository in `external/`, at the commit audited, and leaves it
+unmodified; `external/README.md` gives the clone commands. This repository ships derived artifacts
+only: the pooled RNAlight sequences and k-mer matrix, MMseqs2 clusters, PubMed co-occurrence counts,
+and the **cached doc2vec node embeddings** used for every DVMnet run (gensim's doc2vec is not
+deterministic; with the cache the DVMnet analyses reproduce exactly).
+
+LncPTPred's released trained model (`models/models.zip`, two pickles) is read **without being loaded**:
+`revision_r2/inspect_released_lncptpred_model.py` decodes it with an unpickler whose every class
+reference resolves to an inert placeholder, so no code from the files can run. The decoded model is
+third-party and is not included; the script regenerates it from your clone.
+
+## Layout
+
+The directories mirror the project in which the analyses were run, because each script reads its
+inputs relative to its own directory:
+
+| directory | contents |
 |---|---|
-| RNAlight | https://github.com/YangLab/RNAlight |
-| DVMnet | https://github.com/liuliwei1980/DVMnet |
-| LncPTPred | https://github.com/zglabDIB/lncptpred |
+| `code/`, `data/`, `results/` | v2 (the original submission): scripts, derived data and results |
+| `repro/` | the analysis scripts of both revisions, the queues that ran them one at a time, the inputs they read next to themselves (embedding cache, MMseqs2 clusters), and the first revision's results with their logs |
+| `revision/` | the first revision: every number and table it quotes, computed from the result files (`key_numbers.json`) |
+| `revision_r2/` | this revision: results, provenance of the audited repositories and of the released LncPTPred model, and the scripts that compute every number, table and figure |
+| `external/` | empty; clone the audited repositories here |
 
-The audit is only meaningful when run against the authors' own released artifacts, so this
-repository ships **derived** artifacts only:
-
-- `data/pool.fasta`, `data/pool_features.npz` — pooled lncRNA sequences + k-mer matrix (RNAlight)
-- `data/mmseqs_clusters/*.tsv` — MMseqs2 clusters at 0.5/0.7/0.8/0.9 identity
-- `data/pubmed_counts.tsv` — PubMed co-occurrence counts (study-effort proxy)
-- `data/dvmnet_embed_seed42.npz` — **cached doc2vec node embeddings** for DVMnet
-
-The embedding cache matters: gensim's doc2vec is not deterministic, so without it the
-protocol effects would be confounded with embedding noise. Shipping it makes our ablation
-reproducible *exactly* rather than up to that noise.
+In the run logs, the location of the project on the author's computer has been replaced by `.`;
+no other file has been edited.
 
 ## 2. Environment
 
 ```bash
-conda env create -f environment.yml && conda activate lncrna-leakage-audit   # includes MMseqs2
-# or
 python -m venv venv && source venv/bin/activate && pip install -r requirements.txt
 ```
-Python 3.13.5; torch 2.13.0, torch_geometric 2.8.0, gensim 4.4.0, LightGBM 4.6,
-scikit-learn 1.9, MMseqs2 18, ViennaRNA 2.7.2. Seeds fixed (100 for RNAlight to match the
-original; 42 for DVMnet).
+Python 3.13.5; torch 2.13.0, torch_geometric 2.8.0, gensim 4.4.0, LightGBM 4.6, scikit-learn 1.9,
+MMseqs2 18, ViennaRNA 2.7.2. On macOS, torch and LightGBM each load their own OpenMP runtime; the
+baseline script sets `OMP_NUM_THREADS=1` to avoid the resulting deadlock.
 
-### Paths
-No hard-coded paths. Scripts resolve relative to the repo, overridable by env var:
-```bash
-export RNALIGHT_DIR=/path/to/RNAlight     # default ../external/RNAlight
-export DVMNET_DIR=/path/to/DVMnet         # default ../external/DVMnet
-# AUDIT_DATA (../data), AUDIT_RESULTS (../results), AUDIT_FIGS (../figures) rarely need changing
-```
+DVMnet's CUDA-only code runs on CPU through two shims in `code/dvmnet_harness.py` that touch no model
+math (`Tensor.cuda` becomes the identity; `cuda.set_device` a no-op). Its shipped `vectors_{lnc,mi}.pkl`
+are loaded through a restricted unpickler that permits only numpy arrays.
 
-### Running DVMnet's model on CPU
-`code/dvmnet_harness.py` leaves the upstream repository **unmodified**. Two shims make its
-CUDA-only code run on CPU without touching any model math: `torch.Tensor.cuda(...)` becomes
-the identity (the model calls `.cuda(0)` on already-CPU tensors) and `torch.cuda.set_device(...)`
-becomes a no-op. Architecture, hyperparameters (Adam lr=0.0008, hidden 128/64, 19 epochs)
-and features are imported verbatim.
+## 3. Scripts and what they produce
 
-The harness also loads DVMnet's shipped `vectors_{lnc,mi}.pkl` through a **restricted
-unpickler** that permits only numpy array reconstruction and raises on anything else. These
-are third-party pickles; static `pickletools` inspection found nothing but numpy, and both
-load cleanly under the restriction.
+| script | produces |
+|---|---|
+| `repro/exp_dvmnet_revision.py` | DVMnet under every condition: released, valid-pair uniform, **swap** (negatives that re-pair a set's own positives, so every molecule is as frequent among the negatives as among the positives), degree-weighted (α = 0.5, 1, joint, hub-excluded), each with the published split and with unseen lncRNAs; epoch chosen on a selection half, scored on the test half; five independent partitions. `--train-scope train` draws training negatives from the training graph only |
+| `repro/exp_dvmnet_baselines.py` | the seven other model families on exactly the same folds and test negatives (checked fold by fold against the stored degree-sum values) |
+| `revision_r2/verify_swap_draws.py` | replays every swap draw and checks it: no recorded interaction, no repeat, exact endpoint counts in every training set and test half, and re-drawn pairs equal to the maximum-flow minimum where exactness is impossible |
+| `repro/exp_rnalight_baselines.py` | RNAlight families under the published split, repeated CV, a length- and GC-matched subset, homology-aware splits (MMseqs2, 50% and 80%), and 200 random splits with the shipped test size and class counts |
+| `revision_r2/inspect_released_lncptpred_model.py` | the training settings, evaluation record and scaler of the released LncPTPred model (`revision_r2/provenance/released_lncptpred_model_report.json`) |
+| `repro/exp_lncptpred_faithful.py` | LncPTPred: features for all 1,590,016 rows from the released feature code; the released model scored on them; retraining with the recorded settings by the recorded 80/20 procedure; stopping on one validation half and scoring the other; GC- and length-matched evaluation |
+| `repro/count_released_heldout_negatives.py` | how often DVMnet's released training sampler draws a held-out interaction as a negative: the released call replayed over the five partitions, five folds and nineteen epochs, without training (`revision_r2/results/released_heldout_negatives.json`) |
+| `repro/lncptpred_length_match_control.py` | the control for the length-matched LncPTPred evaluation: random subsets with the matched subset's number of positives and of negatives of every protein, drawn without regard to length (200 draws), and the matched subset redrawn with 20 other seeds (`revision_r2/results/lncptpred_length_match_control.json`) |
+| `repro/run_queue_r2.sh` | runs the above one at a time at the lowest priority (`repro/run_queue.sh` for the first revision) |
+| `repro/exp_lncptpred_exact.py` | the first revision's LncPTPred features rebuilt from the released code, on subsamples |
+| `revision/make_tables.py` | every number and table of the first revision (`revision/key_numbers.json`), from the result files only |
+| `revision_r2/make_numbers_r2.py`, `revision_r2/make_tables_r2.py` | every number and table of the paper (`revision_r2/key_numbers_r2.json`), from the result files only |
+| `revision_r2/make_fig_*.py` | Figures 1–3 (`revision_r2/figures/`) |
 
-## 3. Scripts → reported results
+Earlier analyses that the paper still quotes (RNAlight reproduction, homology coverage, study effort,
+LncPTPred single features and feature blocks) are produced by the scripts of v2, kept in `code/`.
 
-| Script | Produces | Needs |
-|---|---|---|
-| `reproduce_rnalight.py` | featurization check (max\|Δ\| < 1e-16) + AUROC 0.780 vs reported 0.783 | RNALIGHT_DIR |
-| `exp_homology_split.py` | random CV 0.728; MMseqs2 GroupKFold 0.728 (id0.5) / 0.725 (id0.8); homolog coverage 1.6–5.2% | bundled `data/` |
-| `exp_composition_confounds.py` | AUROC by feature set (dinucleotide-16 = 0.703 = 97% of the full model) | RNALIGHT_DIR |
-| `exp_confound_matched.py` | length/GC-matched AUROC 0.689; 8-seed CV 0.730 ± 0.004 | RNALIGHT_DIR |
-| `exp_study_effort.py` | strata AUROC 0.730/0.719/0.672/0.716 (no famous-few gradient) | RNALIGHT_DIR |
-| `exp_dvmnet_topology.py` | degree-sum 0.750 under their protocol; 0.500 cold-start (model-free) | DVMNET_DIR |
-| `exp_dvmnet_negatives.py` | degree-matched negatives 0.458 (model-free) | DVMNET_DIR |
-| **`exp_dvmnet_model.py`** | **the ablation ladder: DVMnet's deep model, 5 conditions × 5 folds** → `results/dvmnet_model_results.json` | DVMNET_DIR |
-| **`exp_dvmnet_negative_types.py`** | 55.5% of DVMnet's negatives are impossible pair types (analytic expectation 54.3%) | DVMNET_DIR |
-| **`exp_dvmnet_stats.py`** | paired tests / CIs / Cohen's dz → `results/dvmnet_stats.json` | `results/` |
-| `exp_lncptpred_audit.py` | benchmark probes: length match fails (0.528), GC leaks 0.628 | LncPTPred data |
-| `exp_lncptpred_model.py` | model-level: 0.790 full, −0.031 under GC matching | LncPTPred data |
-| `make_figures.py` | Figures 1–3 (`.png` + `.pdf`) | `results/` |
-| **`factcheck_draft.py`** | asserts all 70 manuscript numbers against the results JSONs | `results/` |
+## 4. Changelog
 
-## 4. The headline, reproduced
+- **v3.0.0** (2026-10) — second revision. Four explicit questions; several model families on every
+  benchmark; swap negatives; DVMnet's degree-weighted conditions rerun with training negatives drawn
+  from the training graph only (the earlier runs drew them with degrees counted over all interactions,
+  held-out ones included, and under the entity-disjoint split over held-out lncRNAs as well);
+  LncPTPred reproduced with the full dataset and the settings recorded in the released model. Also
+  deposits the scripts and results of the first revision (2026-09), which no earlier version
+  contained. The readings of v2 that this release withdraws are listed in the paper's response to
+  the reviewers.
+- **v2.0.1** (2026-07-16) — figure layout fixes.
+- **v2.0.0** (2026-07-16) — DVMnet's deep model under protocol changes; LncPTPred added.
+- **v1.0.0** (2026-07-02) — RNAlight and DVMnet, model-free.
 
-```bash
-cd code
-export DVMNET_DIR=/path/to/your/clone/DVMnet
-python exp_dvmnet_model.py --out ../results/dvmnet_model_results.json   # ~70 min, CPU
-python exp_dvmnet_stats.py
-```
+## 5. License
 
-| condition | best epoch | final epoch | degree baseline (0 params) |
-|---|---|---|---|
-| verbatim (as released) | 0.8234 ± 0.0230 | 0.8021 ± 0.0364 | 0.7600 |
-| random-uniform | 0.8028 ± 0.0168 | 0.7375 ± 0.0181 | 0.7502 |
-| **random-degmat** | **0.5098 ± 0.0287** | 0.5065 ± 0.0283 | 0.4581 |
-| cold-uniform | 0.6839 ± 0.0217 | 0.5803 ± 0.0870 | 0.4943 |
-| cold-degmat | 0.5735 ± 0.0279 | 0.3924 ± 0.0217 | 0.3841 |
-
-Fixing **only** the negative sampling — the published split left exactly as the authors
-wrote it — takes the deep model from 0.803 to **0.510, i.e. chance**, in every one of five
-folds (paired Δ = −0.2929, 95% CI [−0.3488, −0.2371], Cohen's dz = −6.51).
-
-### What we do not claim
-
-Neither control is clean, and they are biased in opposite directions: cold-uniform is
-optimistic (popularity still leaks), and cold-degmat is pessimistic, because in a
-positive-unlabelled setting degree-matched negatives are exactly the pairs most likely to
-be *unobserved true interactions*. So **0.39–0.68 is a floor, not an estimate**, and the
-released benchmark contains no information that can narrow it. The defensible claim is that
-the reported 0.87 is not attainable under any leakage-controlled protocol we tested — not
-that the model knows nothing. It beats the degree heuristic in every condition.
-
-`results/dvmnet_model_results.json` is a **direct, single-run output** of
-`exp_dvmnet_model.py` and carries per-fold arrays; `exp_dvmnet_stats.py` reads that JSON
-rather than parsing the run log, so no published number depends on a rounded log value.
-
-## 5. Changelog
-
-- **v2.0.0** (2026-07-16) — DVMnet's **deep model** run under the full ablation ladder
-  (v1.0.0 was model-free only); **LncPTPred** added as a third target; paired statistics;
-  the negative-set validity probe (55.5% impossible pair types); `factcheck_draft.py`;
-  per-fold arrays and cached embeddings for exact reproduction.
-- **v1.0.0** (2026-07-02) — RNAlight + DVMnet, model-agnostic protocol diagnosis.
-
-## 6. License
-
-Audit code: MIT (see `LICENSE`). Upstream data retains its original license and is not
-redistributed here.
+Audit code: MIT (see `LICENSE`). Upstream data and models keep their original terms and are not
+redistributed.

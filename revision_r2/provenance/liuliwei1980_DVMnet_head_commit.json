@@ -1,0 +1,84 @@
+[
+  {
+    "sha": "27bd6ea0d8782dc4b902bf79de9c5e8a38900e5f",
+    "node_id": "C_kwDOLoxSntoAKDI3YmQ2ZWEwZDg3ODJkYzRiOTAyYmY3OWRlOWM1ZThhMzg5MDBlNWY",
+    "commit": {
+      "author": {
+        "name": "Liwei Liu (刘立伟)",
+        "email": "156767365+liuliwei1980@users.noreply.github.com",
+        "date": "2024-10-24T02:34:38Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2024-10-24T02:34:38Z"
+      },
+      "message": "Update model.py",
+      "tree": {
+        "sha": "17324e12321cb5181a680a1079c48ddd84d0f431",
+        "url": "https://api.github.com/repos/liuliwei1980/DVMnet/git/trees/17324e12321cb5181a680a1079c48ddd84d0f431"
+      },
+      "url": "https://api.github.com/repos/liuliwei1980/DVMnet/git/commits/27bd6ea0d8782dc4b902bf79de9c5e8a38900e5f",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJnGbI+CRC1aQ7uu5UhlAAAqSYQAApk5UGCsCYJN76U0Iet9nUa\nOcQwJ1Zf4vWRa5BpyhfAk/TZCgQPSuJC0/rLHGuERPjDNlRhH1ue5HAXXDmG9ZQS\niuSb9fs2VhDvQ3oqCfGLkO2Lxuif4CTry00oumGgpO4msw4KX92PPCghnnIVnZC6\n9YMY8I/NEyEUVm0wkX2078kXq4uzS7SIhfZ+hbAheLDA+euvn5yIa0PPoNH/QxKo\ngy5LlJOL3CMqe3AqeC3gktnyKX9J5dYkafjCJ8fouDLpawLoqomGpRGcid+FMJlX\nPzM5E20fnoHyeACiY4aWls2VPRITmmlm3k85Palw/ZvcqZ7hL4OsunKIfSE/hYgA\n8ff52Mv/Zi/aY+DJ8uMe206RcJfRBDb/xgSVHhSZoO1rhT0z1Y6z5J8xBUJ5RTGd\nQEHGiqDvfP/a9753B1E9dg8gVQLZvirgCBU1Frw4dWRDdsj6O1qdgDuKd535xhQ9\nQQsDkhgdNO63nSlBNCCki813yaGT0hWQTCTVxysJhG7parHfp0qtP5HsygfTpScp\nS5BMx335KNDxmrm3+z/vXMFfhWC4xiTkKNVnK6b8Y6KJ+pr27TAMkKiTI4EwokUD\nH+u5c6/7qMls8GxqxUVGKPCCtxImZ4menDrtDp6Ag/mbcUpTu4jgVMY4VRaZxDCU\nZHr+xCV0YpnGa+LF8+qz\n=blqS\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 17324e12321cb5181a680a1079c48ddd84d0f431\nparent f95822efd05e83990180406a49a02600557ffd63\nauthor Liwei Liu (刘立伟) <156767365+liuliwei1980@users.noreply.github.com> 1729737278 +0800\ncommitter GitHub <noreply@github.com> 1729737278 +0800\n\nUpdate model.py",
+        "verified_at": "2024-11-19T05:13:16Z"
+      }
+    },
+    "url": "https://api.github.com/repos/liuliwei1980/DVMnet/commits/27bd6ea0d8782dc4b902bf79de9c5e8a38900e5f",
+    "html_url": "https://github.com/liuliwei1980/DVMnet/commit/27bd6ea0d8782dc4b902bf79de9c5e8a38900e5f",
+    "comments_url": "https://api.github.com/repos/liuliwei1980/DVMnet/commits/27bd6ea0d8782dc4b902bf79de9c5e8a38900e5f/comments",
+    "author": {
+      "login": "liuliwei1980",
+      "id": 156767365,
+      "node_id": "U_kgDOCVgUhQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/156767365?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/liuliwei1980",
+      "html_url": "https://github.com/liuliwei1980",
+      "followers_url": "https://api.github.com/users/liuliwei1980/followers",
+      "following_url": "https://api.github.com/users/liuliwei1980/following{/other_user}",
+      "gists_url": "https://api.github.com/users/liuliwei1980/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/liuliwei1980/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/liuliwei1980/subscriptions",
+      "organizations_url": "https://api.github.com/users/liuliwei1980/orgs",
+      "repos_url": "https://api.github.com/users/liuliwei1980/repos",
+      "events_url": "https://api.github.com/users/liuliwei1980/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/liuliwei1980/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "f95822efd05e83990180406a49a02600557ffd63",
+        "url": "https://api.github.com/repos/liuliwei1980/DVMnet/commits/f95822efd05e83990180406a49a02600557ffd63",
+        "html_url": "https://github.com/liuliwei1980/DVMnet/commit/f95822efd05e83990180406a49a02600557ffd63"
+      }
+    ]
+  }
+]
